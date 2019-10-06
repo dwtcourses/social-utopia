@@ -7,8 +7,7 @@
 	session_start();
 
 // Define global application variables
-    // Base URL for application
-    define( 'APP_URL', 'https://dev.interactiveutopia.com/socialMediaApp/');
+    require ('./_inc/_private/auth.tokens.php');
 
 // Load composer required files
 	require_once "vendor/autoload.php";

@@ -4,4 +4,4 @@
 _notes/
 /bower_components/
 /node_modules/
-/_inc/class/
+/_inc/_private/
