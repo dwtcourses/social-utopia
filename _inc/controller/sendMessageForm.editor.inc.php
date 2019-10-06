@@ -1,38 +1,4 @@
-<?php
-// Message Editor / Composer View
-?>
-			<div class="container-fluid">
-				<div class="row">
- 					<div class="col-md-3">
-					<h2>Accounts:</h3>
-<?php
-					if ( isset($_GET['manageSelectedFacebookPage']) || isset($_SESSION['lastFbPageToManage']) ) {
-						if ( isset($_GET['manageSelectedFacebookPage']) ) {
-							$selectedFacebookPage = $_GET['manageSelectedFacebookPage'];
-							$_SESSION['lastFbPageToManage'] = $_SESSION['fbPageInformation']->$selectedFacebookPage->id;
-						}
-						if ( isset($_SESSION['lastFbPageToManage']) ) 
-							$selectedFacebookPage = $_SESSION['lastFbPageToManage'];
-						
-						
-						$fbPageId =  $_SESSION['userInformation']->$selectedFacebookPage->facebook->id;
-?>
-						<h3>Facebook Page</h3>
-						<p><?= $_SESSION['userInformation']->$selectedFacebookPage->facebook->pageName; ?></p>
-<?php
-					}
-					else {
-?>
-						<h3>Facebook</h3>
-						<p>Select page to manage</p>
-<?php
-					}
-					// Include Twitter Management Code
-					require_once('_inc/twitter.inc.php');
-?>
- 					</div>
-  					<div class="col-md-9">
-						<h2>Let's Send A Message</h2>
+<h2>Let's Send A Message!</h2>
 							<form class="formStyle" id="form">
 <?php
 					if ( isset($_GET['manageSelectedFacebookPage']) ) {
@@ -72,7 +38,3 @@
 								<button type="submit" id="sendMessageBtn" name="sendMessageBtn" class="btn btn-primary" value="Send Message" <?php if( !isset( $_SESSION['userInformation'] ) ) echo 'disabled'; ?>>Send Message</button>
 							</form>
 							<div id="err"></div>
- 					</div>
-				</div>
-				<script src="_js/formGlobal.js"></script>
-			</div>
