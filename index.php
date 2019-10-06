@@ -3,7 +3,7 @@
 	require_once('_inc/loader.inc.php');
 
 // Load Page Header
-	require_once ('_inc/header.inc.php');
+	require_once ('_inc/view/header.inc.php');
 
 // Check for Logged In User
 	if ( !isset( $_SESSION['user'] ) ){
