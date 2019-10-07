@@ -1,4 +1,7 @@
 <?php
+// Application handler
+// Send message and photo are started via Send Message Form submit button called by jQuery (AJAX)
+
 // Require loader file
 require_once('_inc/loader.inc.php');
 
