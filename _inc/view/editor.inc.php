@@ -1,5 +1,6 @@
 <?php
 // Message Editor / Composer View
+
 ?>
 			<div class="container-fluid">
 				<div class="row">
@@ -16,5 +17,7 @@
                         ?>
  					</div>
 				</div>
-				<script src="../_js/formGlobal.js"></script>
+                
+                <!-- Load from handling JavaScript -->
+				<script src="./_js/formGlobal.js"></script>
 			</div>

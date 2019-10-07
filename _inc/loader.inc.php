@@ -6,8 +6,8 @@
 // Start session in server
 	session_start();
 
-// Define global application variables
-    require ('./_inc/_private/auth.tokens.php');
+// Load global application variables
+    require ('_inc/_private/auth.tokens.php');
 
 // Load composer required files
 	require_once "vendor/autoload.php";

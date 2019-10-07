@@ -13,5 +13,5 @@
 						<button type="button" id="sendMessageBtn" name="sendMessageBtn" class="btn" value="Send Message">Send Message</button>
 					</form>
 				</div>
-				<script src="_js/formGlobal.js"></script>
+				<script src="<?php echo APP_URL ?>_js/formGlobal.js"></script>
 			</div>

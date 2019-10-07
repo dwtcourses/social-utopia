@@ -17,6 +17,7 @@
 	} else {
         // If user is logged in then continue
         // Check to see if user is new or returning
+        
         if ( $_sql->checkIt( 'select tokens from iu_users where facebookId = "' . $_fb->getUserInformation()['id'] . '"' ) == false ) {
 			// If new user, then display sign up page
             require_once('_inc/setUpUser.inc.php');
