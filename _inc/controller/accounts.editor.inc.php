@@ -22,5 +22,5 @@
 <?php
 					}
 					// Include Twitter Management Code
-					require_once('./_inc/twitter.inc.php');
+					require_once('./_inc/view/twitter.inc.php');
 ?>
