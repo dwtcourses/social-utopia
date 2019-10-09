@@ -1,7 +1,7 @@
 <h2>Let's Send A Message!</h2>
 							<form class="formStyle" id="form">
 <?php
-					if ( isset($_GET['manageSelectedFacebookPage']) ) {
+					if ( isset( $_SESSION['userInformation']->$selectedFacebookPage->facebook->id ) ) {
 ?>
 								<input type="hidden" name="facebookPageId" id="facebookPageId" value="<?= $fbPageId; ?>">
 								<input type="hidden" name="facebookToken" id="facebookToken" value="<?= $_SESSION['userInformation']->$selectedFacebookPage->facebook->pageToken; ?>">
