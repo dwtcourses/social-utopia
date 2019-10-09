@@ -6,6 +6,10 @@
 
 // Require loader file
 	require_once('_inc/loader.inc.php');
+// Start Facebook Custom Class
+	$_fb = new facebookCustom();
+/* Start Twitter Class */
+	$_twitter = new twitterCustom();
 
 // Load Page Header
 	require_once ('_inc/view/header.inc.php');
