@@ -3,16 +3,15 @@
 					if ( isset($_GET['manageSelectedFacebookPage']) || isset($_SESSION['lastFbPageToManage']) ) {
 						if ( isset($_GET['manageSelectedFacebookPage']) ) {
 							$selectedFacebookPage = $_GET['manageSelectedFacebookPage'];
-							$_SESSION['lastFbPageToManage'] = $_SESSION['fbPageInformation']->$selectedFacebookPage->id;
+							$_SESSION['lastFbPageToManage'] = $selectedFacebookPage;
 						}
 						if ( isset($_SESSION['lastFbPageToManage']) ) 
 							$selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 						
-						
-						$fbPageId =  $_SESSION['userInformation']->$selectedFacebookPage->facebook->id;
+						$fbPageId =  $selectedFacebookPage;
 ?>
-						<h3>Facebook Page</h3>
-						<p><?= $_SESSION['userInformation']->$selectedFacebookPage->facebook->pageName; ?></p>
+						<h3>Facebook Pages</h3>
+						<p><?= $_SESSION['userInformation']->$selectedFacebookPage->pageName; ?></p>
 <?php
 					}
 					else {

@@ -1,8 +1,11 @@
 <?php
 use Abraham\TwitterOAuth\TwitterOAuth;
 
+$selectedFacebookPage = $_SESSION['lastFbPageToManage'];
+$oath_token = $_SESSION['userInformation']->$selectedFacebookPage->twitter['oauth_token'];
+$oath_token_secret = $_SESSION['userInformation']->$selectedFacebookPage->twitter['oauth_token_secret'];
 // Create new Twitter API Connection with final user credentials
-$this->twitterConnection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_SESSION['twitterLoggedInUserToken']['oauth_token'], $_SESSION['twitterLoggedInUserToken']['oauth_token_secret']);
+$this->twitterConnection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $oath_token, $oath_token_secret);
 		
 // Get user content
 $this->content = $this->twitterConnection->get("account/verify_credentials");

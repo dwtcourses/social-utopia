@@ -9,16 +9,22 @@ if ( !isset($_SESSION['twitterLoggedIn']) ) {
 	$this->twitterConnection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $_GET['oauth_token'], $_GET['oauth_verifier']);
 
 	// Retrieve final user access token
-	$this->access_token = $_SESSION['twitterLoggedInUserToken'] = $this->twitterConnection->oauth("oauth/access_token", [ "oauth_verifier" => $_GET['oauth_verifier'] ]);
-
+	//$this->access_token = $_SESSION['twitterLoggedInUserToken'] = $this->twitterConnection->oauth("oauth/access_token", [ "oauth_verifier" => $_GET['oauth_verifier'] ]);
+	$this->access_token = $this->twitterConnection->oauth("oauth/access_token", [ "oauth_verifier" => $_GET['oauth_verifier'] ]);
+        ;
 	// Set Twitter Logged In for user to true
 	$_SESSION['twitterLoggedIn'] = true;
-        
+
+    // Save twitter tokens in user session
 	$managingUserPageId = $_SESSION['lastFbPageToManage'];
 	$_SESSION['userInformation']->$managingUserPageId->twitter = new stdClass();
-	$_SESSION['userInformation']->$managingUserPageId->twitter->token = $this->access_token;
-				
-	// Redirect User To App
+    // Store twitter information under facebook page id for connection
+	$_SESSION['userInformation']->$managingUserPageId->twitter = $this->access_token;
+	
+    //Debugging
+    //echo '<pre>'; print_r ($_SESSION); echo '</pre>';     
+	
+    // Redirect User To App
 	header('Location: https://dev.interactiveutopia.com/socialMediaApp?twitterLoggedIn=true');
     } else {
 	// If user did not authorize access to his account then throw error

@@ -1,6 +1,6 @@
 <?php
 
-if ( !isset( $_SESSION['twitterLoggedInUserToken'] ) ) {
+if ( !isset( $_SESSION['twitterLoggedIn'] ) ) {
 ?>
 	<h3>Twitter</h3>
 	<p class=""><a href="twitterRedirect.php"><input type="button" id="loginTwitter" class="btn btn-primary"  value = "Login | Twitter "/></a></p>
