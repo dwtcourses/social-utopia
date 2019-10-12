@@ -13,5 +13,6 @@ $this->content = $this->twitterConnection->get("account/verify_credentials");
 //	print_r ( $this->content );
 //echo '<pre>';
 echo "<h3>Twitter</h3>";
-echo '<p>' . $this->content->name . '</p>';
+echo '<p>' . $this->content->name . ' | ';
+echo '<a href="logout.php?logOutTwitter=' . $selectedFacebookPage . '">Log Out</a></p>';
 //$statues = $this->twitterConnection->post("statuses/update", ["status" => "hello world"]);

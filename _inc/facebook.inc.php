@@ -17,7 +17,7 @@ if( !isset( $_SESSION['userInformation'] )) {
         $queryResults3 = $queryRequest3->fetch();
         //$_SESSION['userFacebookId'] = $queryResults3['facebookId'];
         $_SESSION['userInformation'] = unserialize ( $queryResults3['tokens'] );
-
+        if (!isset($_SESSION['lastFbPageToManage'])) $_SESSION['lastFbPageToManage'] = $_SESSION['userInformation']->lastManagedPgId;
         echo '<pre>';
             //print_r( $queryResults3 );
             //print_r( $_SESSION );

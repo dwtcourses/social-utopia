@@ -12,8 +12,10 @@
 ?>
 						<h3>Facebook Pages</h3>
 						<p><?= $_SESSION['userInformation']->$selectedFacebookPage->pageName; ?></p>
+                        
 <?php
-					}
+					$_SESSION['userInformation']->lastManagedPgId = $_SESSION['lastFbPageToManage'];
+                    }
 					else {
 ?>
 						<h3>Facebook</h3>
