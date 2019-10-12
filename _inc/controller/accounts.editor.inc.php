@@ -24,4 +24,6 @@
 					}
 					// Include Twitter Management Code
 					require_once('./_inc/view/twitter.inc.php');
+                    // Include Twitter Management Code
+					require_once('./_inc/view/logIn.linkedIn.php');
 ?>
