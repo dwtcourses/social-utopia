@@ -22,5 +22,8 @@ echo '<a href="https://www.linkedin.com/oauth/v2/authorization?response_type=cod
 //    echo '<pre>';
 //        print_r($user_data);
 //    echo '</pre>';
-    echo '<p>' . $user_data->lastName->localized->en_US . '</p>';
+    
+    // Get US Content
+    echo '<h3>LinkedIn</h3>';
+    echo '<p>' . $user_data->firstName->localized->en_US . ' ' . $user_data->lastName->localized->en_US . ' | <a href="logout.php?logOutLinkedIn=' . $selectedFacebookPage . '">Log Out</a></p>';
 }

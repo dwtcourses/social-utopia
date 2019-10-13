@@ -11,6 +11,11 @@ if ( isset( $_GET['logOutTwitter'] ) ){
     unset( $_SESSION['userInformation']->$selectedFacebookPage->twitter );
     header("Location: https://dev.interactiveutopia.com/socialMediaApp");
     die();
+} else if ( isset( $_GET['logOutLinkedIn'] ) ){
+    $selectedFacebookPage = $_GET['logOutLinkedIn'];
+    unset( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn );
+    header("Location: https://dev.interactiveutopia.com/socialMediaApp");
+    die();
 } else {
     session_destroy();
     header("Location: https://dev.interactiveutopia.com/socialMediaApp");
