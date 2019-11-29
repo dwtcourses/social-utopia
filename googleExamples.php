@@ -22,29 +22,42 @@ if ( !isset( $_SESSION['access_token'] ) ) {
     //https://mybusiness.googleapis.com/v4/accounts/{accountId}/locations/{locationId}/localPosts
     //https://mybusiness.googleapis.com/v4/accounts?oauth_token=ya29.Il-pB-MMukgo-cywcixtuev-S8tuVsx30LekKlhfTBwdZEjLeVp0oC2AdlPFboAptGrJyeTUbEpZemB0171GOZaiQhnuC1MwzYlrWiDlF7Vo_zq-9nxXs0YJhFSVnkP9TA
     $submitJson = '{
-          "languageCode": "en-US",
-          "summary": "Order your Thanksgiving turkeys now!!",
-          "callToAction": {
-            "actionType": "ORDER",
-            "url": "http://google.com/order_turkeys_here",
-          },
-          "media": [
-            {
-              "mediaFormat": "PHOTO",
-              "sourceUrl": "https://www.google.com/real-turkey-photo.jpg",
-            }
-          ],
-        }';
-    
-    $url = 'https://mybusiness.googleapis.com/v4/accounts/113973717102153909319/locations/00817159802626613707/localPosts';
+	"languageCode": "en",
+	"topicType": "LOCAL_POST_TOPIC_TYPE_UNSPECIFIED",
+	"summary": "Order your Thanksgiving turkeys now!!",
+	"callToAction": {
+		"actionType": "LEARN_MORE",
+		"url": "http://google.com/order_turkeys_here"
+	},
+	"media": [{
+		"mediaFormat": "PHOTO",
+		"sourceUrl": "https://blog.psprint.com/sites/default/files/2012/10/Paint-A-Clever-Turkey-for-Thanksgiving-Day-Google-Chrome_2012-10-31_13-36-12.png"
+	}]
+}';
+	$postfields = array(
+'topicType' => "ORDER",
+'languageCode' => "en_US",
+'summary' => 'test post 123',
+);
+	//$submitJson = json_encode($postfields);
+    //echo $submitJson;
+	
+    //$url = 'https://mybusiness.googleapis.com/v4/accounts/113973717102153909319/locations';
+	$url = 'https://mybusiness.googleapis.com/v4/accounts/113973717102153909319/locations/15881308214783542256/localPosts';
+	//$url = 'https://mybusiness.googleapis.com/v4/15881308214783542256/localPosts';
     $ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL,$url);
-	curl_setopt($ch, CURLOPT_POST, 0);
-	curl_setopt($ch, CURLOPT_POSTFIELDS,'idtoken=');
+	curl_setopt($ch, CURLOPT_POST, false);
+	curl_setopt($ch, CURLOPT_POSTFIELDS,$submitJson);
+	$access_token = $_SESSION['access_token']['access_token'];
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Bearer '. $access_token,'Content-Type: application/json'));
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 	$server_output = curl_exec ($ch);
 	curl_close ($ch);
-    echo $server_output;
-    print_r($_SESSION);
+    echo'<pre>';
+		print_r ($server_output);
+	echo'</pre>';
+    //echo'<pre>';print_r($_SESSION);echo'</pre>';
     //echo $_SESSION['access_token']['access_token'];
 }

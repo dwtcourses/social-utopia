@@ -21,5 +21,5 @@ $_SESSION['access_token'] = $client->getAccessToken();
 //echo '<pre>';
     //print_r($_REQUEST);
     //print_r($access_token);
-    print_r($_SESSION);
+    echo'<pre>';print_r($_SESSION);echo'</pre>';
 //echo '<pre>';
