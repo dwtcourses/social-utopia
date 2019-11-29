@@ -1,7 +1,4 @@
 <?php
-// client id: 811722820924-davu5jtdf7luva27p1v5ah7bo3u37cbi.apps.googleusercontent.com
-// client secret: ilJEuYhzwV9sSZkskiGlK1Kz
-
 // Handler for Twitter user auth token
 session_start();
 
