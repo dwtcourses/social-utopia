@@ -20,7 +20,6 @@ if ( !isset( $_SESSION['access_token'] ) ) {
 } else {
     //https://assets.pcmag.com/media/images/549560-apple-imac-2019-27-inch.jpg?width=640&height=471
     //https://mybusiness.googleapis.com/v4/accounts/{accountId}/locations/{locationId}/localPosts
-    //https://mybusiness.googleapis.com/v4/accounts?oauth_token=ya29.Il-pB-MMukgo-cywcixtuev-S8tuVsx30LekKlhfTBwdZEjLeVp0oC2AdlPFboAptGrJyeTUbEpZemB0171GOZaiQhnuC1MwzYlrWiDlF7Vo_zq-9nxXs0YJhFSVnkP9TA
     $submitJson = '{
 	"languageCode": "en",
 	"topicType": "LOCAL_POST_TOPIC_TYPE_UNSPECIFIED",
