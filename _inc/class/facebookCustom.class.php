@@ -13,7 +13,7 @@ class facebookCustom {
 		$this->fb = new Facebook\Facebook([
 		  'app_id' => $appID,
 		  'app_secret' => $appIDSecret,
-		  'default_graph_version' => 'v2.3',
+		  'default_graph_version' => 'v5.0',
 		  // . . .
 		  ]);
 	}
