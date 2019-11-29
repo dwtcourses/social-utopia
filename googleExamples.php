@@ -41,7 +41,6 @@ if ( !isset( $_SESSION['access_token'] ) ) {
 	curl_setopt($ch, CURLOPT_URL,$url);
 	curl_setopt($ch, CURLOPT_POST, 0);
 	curl_setopt($ch, CURLOPT_POSTFIELDS,'idtoken=');
-	//curl_setopt($ch, CURLOPT_POSTFIELDS,'client_id=811722820924-davu5jtdf7luva27p1v5ah7bo3u37cbi.apps.googleusercontent.com&client_secret=ilJEuYhzwV9sSZkskiGlK1Kz');
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$server_output = curl_exec ($ch);
 	curl_close ($ch);
