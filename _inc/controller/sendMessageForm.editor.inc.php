@@ -12,13 +12,23 @@
 <?php
 					}
 								
-					if ( isset ( $_SESSION['twitterLoggedIn'] ) ) {					
+					if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->twitter ) ) {					
 ?>
 								<input type="hidden" name="twitterToken" id="twitterToken" value="twitter">
 <?php						
 					} else {
 ?>
 								<input type="hidden" name="twitterToken" id="twitterToken" value="false">
+<?php	
+					}
+                                
+					if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget ) ) {					
+?>
+								<input type="hidden" name="linkedInToken" id="linkedInToken" value="linkedIn">
+<?php						
+					} else {
+?>
+								<input type="hidden" name="linkedInToken" id="linkedInToken" value="false">
 <?php	
 					}
 ?>

@@ -23,3 +23,6 @@ $_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'] . '/socialMediaApp/';
 
 // Load Twitter Custom Class
 	require_once ($_SERVER['DOCUMENT_ROOT'] . '/_inc/class/twitterCustom.class.php');
+
+// Load LinkedIn Custom Class
+	require_once ($_SERVER['DOCUMENT_ROOT'] . '/_inc/class/linkedIn.class.php');

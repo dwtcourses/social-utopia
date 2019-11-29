@@ -8,11 +8,16 @@ require_once('_inc/loader.inc.php');
 $_fb = new facebookCustom();
 /* Build TwitterOAuth object with client credentials. */
 $_twitter = new twitterCustom();
+/* Build LinkedIn custom class */
+$_linkedIn = new linkedInCustom();
+
+$selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 
 // Set variables
 	$facebookPageId = $_POST['facebookPageId'] ?? '';
 	$facebookToken = $_POST['facebookToken'] ?? '';
 	$twitterToken = $_POST['twitterToken'] ?? '';
+    $linkedInRequest = $_POST['linkedInToken'] ?? '';
 	$postMessage = $_POST['postMessage'] ?? '';
 	$linkURL = $_POST['linkURL'] ?? '';
 
@@ -20,12 +25,22 @@ $_twitter = new twitterCustom();
 	if(  $_FILES['postImage']['tmp_name'] != '' ) {
 		require_once( '_inc/photoUploader.inc.php' );
 	} else {
-		$_fb->sendMessage( $postMessage, $facebookToken, $facebookPageId, $linkURL );
+		if ( $postMessage != '') $_fb->sendMessage( $postMessage, $facebookToken, $facebookPageId, $linkURL );
+                else echo 'Cannot send empty message...';
 	// Twitter Section
-		if ( isset ( $_SESSION['twitterLoggedIn'] ) ) {
+		if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->twitter ) ) {
 			if ( $linkURL != '') { $postMessage = $postMessage . ' at ' . $linkURL; }
-			$_twitter->sendMessage( $postMessage );
+			if ( $postMessage != '') $_twitter->sendMessage( $postMessage );
+                else echo 'Cannot send empty message...';
 		}
+    // LinkedIn Section
+        if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget ) ) {
+            $selectedCompanyTarget = str_replace("urn:li:organization:", "", $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget);
+            
+            if ( $postMessage != '') $_linkedIn->sendMessage( $postMessage );
+                else echo 'Cannot send empty message...';
+
+        }
 	}
 
 //echo 'test complete';
