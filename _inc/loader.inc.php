@@ -26,3 +26,6 @@ $_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'] . '/socialMediaApp/';
 
 // Load LinkedIn Custom Class
 	require_once ($_SERVER['DOCUMENT_ROOT'] . '/_inc/class/linkedIn.class.php');
+
+// Load Google API Custom Class
+	require_once ($_SERVER['DOCUMENT_ROOT'] . '/_inc/class/google.class.php');

@@ -24,7 +24,7 @@ $ch = curl_init();
     $server_output4 = curl_exec($ch);
     curl_close ($ch);
     
-    echo ' | LinkedIn Message Sent'
+    echo ' | LinkedIn Message Sent';
    // $user_data = json_decode($server_output4);   
 //echo '<pre>';
 //    print_r($user_data);

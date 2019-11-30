@@ -34,7 +34,7 @@
 					}
 					
 // Google API
-                    if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget ) ) {					
+                    if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation ) ) {					
 ?>
 								<input type="hidden" name="googleToken" id="googleToken" value="true">
 <?php						
@@ -43,7 +43,6 @@
 								<input type="hidden" name="googleToken" id="googleToken" value="false">
 <?php	
 					}
-?>
 ?>
 								<div class="form-group">
 									<label for="postMessage">Message:</label>

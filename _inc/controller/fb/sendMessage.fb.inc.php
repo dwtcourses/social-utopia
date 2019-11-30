@@ -2,7 +2,7 @@
 
 try {
             // Send Message
-			$res = $this->fb->sendRequest('POST', '/' . $pageId . '/feed', ['message' => $message, 'link' => $link ], $pageToken, 'eTag', 'v2.2');
+			$res = $this->fb->sendRequest('POST', '/' . $pageId . '/feed', ['message' => $message, 'link' => $link ], $pageToken, 'eTag', 'v5.0');
             // Print success message
 			echo 'Message has been sent';
 		} catch(Facebook\Exceptions\FacebookResponseException $e) {

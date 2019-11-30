@@ -10,6 +10,8 @@ $_fb = new facebookCustom();
 $_twitter = new twitterCustom();
 /* Build LinkedIn custom class */
 $_linkedIn = new linkedInCustom();
+// Build Google API Class
+$_google = new googleCustom();
 
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 
@@ -18,6 +20,7 @@ $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 	$facebookToken = $_POST['facebookToken'] ?? '';
 	$twitterToken = $_POST['twitterToken'] ?? '';
     $linkedInRequest = $_POST['linkedInToken'] ?? '';
+ $linkedInRequest = $_POST['googleToken'] ?? '';
 	$postMessage = $_POST['postMessage'] ?? '';
 	$linkURL = $_POST['linkURL'] ?? '';
 
@@ -40,6 +43,11 @@ $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
             if ( $postMessage != '') $_linkedIn->sendMessage( $postMessage );
                 else echo 'Cannot send empty message...';
 
+        }
+    // Google My Business API Section
+        if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation ) ) {
+            if ( $postMessage != '') $_google->sendMessage( $postMessage );
+                else echo 'Cannot send empty message...';
         }
 	}
 
