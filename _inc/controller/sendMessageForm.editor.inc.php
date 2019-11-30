@@ -1,6 +1,7 @@
 <h2>Let's Send A Message!</h2>
 							<form class="formStyle" id="form">
 <?php
+// Facebook API
 					if ( isset( $_SESSION['userInformation']->$selectedFacebookPage ) ) {
 ?>
 								<input type="hidden" name="facebookPageId" id="facebookPageId" value="<?= $fbPageId; ?>">
@@ -11,7 +12,7 @@
 								<input type="hidden" name="facebookToken" id="facebookToken" value="false">
 <?php
 					}
-								
+// Twitter API
 					if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->twitter ) ) {					
 ?>
 								<input type="hidden" name="twitterToken" id="twitterToken" value="twitter">
@@ -21,7 +22,7 @@
 								<input type="hidden" name="twitterToken" id="twitterToken" value="false">
 <?php	
 					}
-                                
+// LinkedIn API              
 					if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget ) ) {					
 ?>
 								<input type="hidden" name="linkedInToken" id="linkedInToken" value="linkedIn">
@@ -31,6 +32,18 @@
 								<input type="hidden" name="linkedInToken" id="linkedInToken" value="false">
 <?php	
 					}
+					
+// Google API
+                    if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget ) ) {					
+?>
+								<input type="hidden" name="googleToken" id="googleToken" value="true">
+<?php						
+					} else {
+?>
+								<input type="hidden" name="googleToken" id="googleToken" value="false">
+<?php	
+					}
+?>
 ?>
 								<div class="form-group">
 									<label for="postMessage">Message:</label>

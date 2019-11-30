@@ -1,13 +1,13 @@
 <?php
 // This file will handle Google API Redirect Requests
 
-// Load composer required files
-require_once "./vendor/autoload.php";
-// Start session
-session_start();
+// Require loader file
+	require_once('_inc/loader.inc.php');
+// Get current managed page
+$selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 
 // Log In Redirect
-if ( !isset( $_SESSION['access_token'] ) ) {
+if ( !isset ( $_SESSION['userInformation']->$selectedFacebookPage->google ) ) {
     // Initiate Google Client API Class
     $client = new Google_Client();
     // Provide authentication token
@@ -28,4 +28,16 @@ if ( !isset( $_SESSION['access_token'] ) ) {
     $auth_url = $client->createAuthUrl();
     // Redirect user to Google OAuth log in page
     header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
+} else if ( isset ( $_GET['locationInfo'] ) ) {
+    $locationNum = $_GET['locationInfo'];
+    $googleMyBusLocations = $_SESSION['temp']['locationsInfo'];
+    
+    foreach ( $googleMyBusLocations as $googleMyBusLocation ) {
+        $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation = new stdClass();
+        $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation = $googleMyBusLocations->locations[$locationNum];
+        // Debug
+        //print_r($_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation);
+    }
+    // Redirect user to Google OAuth log in page
+    header('Location: ' . APP_URL);
 }
