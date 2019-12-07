@@ -47,11 +47,16 @@
                   }
                 $_SESSION['userInformation'] = $this->fbInformation;
             } else {
+                $_SESSION['userInformation'] = new stdClass();
                 foreach ($this->resObject as $this->resObjectResponse) {
                     // Print each page information on its own table row
                     echo '<tr><td>' . $this->resObjectResponse['name'] . '</td><td><a href="?manageSelectedFacebookPage=' . $this->resObjectResponse['id'] . '">Use This Token</a></td></tr>';
                     
                     $fbPgId = $this->resObjectResponse['id'];
+                    //echo '<pre>';
+                    //    print_r($_SESSION);
+                    //echo '</pre>';
+                    $_SESSION['userInformation']->$fbPgId = new stdClass();
                     $_SESSION['userInformation']->$fbPgId->pageName = $this->resObjectResponse['name'];
                     $_SESSION['userInformation']->$fbPgId->pageToken = $this->resObjectResponse['access_token'];
                     $_SESSION['userInformation']->$fbPgId->updated = time();
@@ -60,9 +65,13 @@
             
     ?>  
 					</table>
+    
 				</div>
 				
     <?php
+//            echo '<pre>';
+//                    print_r($_SESSION);
+//            echo '</pre>';
 			// Store completed response object information in server session
             //$_SESSION['fbPageInformation'] = $this->fbPageInformation;
 				//print_r ($_SESSION['fbPageInformation']);

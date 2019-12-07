@@ -1,6 +1,8 @@
 <?php
 // Require loader file
 require_once('_inc/loader.inc.php');
+// Start Facebook Custom Class
+$_fb = new facebookCustom();
 
 $facebookUserId =  $_fb->getUserInformation()['id'];
 if ( $_sql->checkIt( 'select tokens from iu_users where facebookId = "' . $facebookUserId . '"' ) == false ) {
