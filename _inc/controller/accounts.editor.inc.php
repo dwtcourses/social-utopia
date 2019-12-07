@@ -1,5 +1,7 @@
-<h2>Accounts</h3>
+<h3>Account Manager</h3>
 <?php
+// Contains left sidebar, account manager and navigator
+
 					if ( isset($_GET['manageSelectedFacebookPage']) || isset($_SESSION['lastFbPageToManage']) ) {
 						if ( isset($_GET['manageSelectedFacebookPage']) ) {
 							$selectedFacebookPage = $_GET['manageSelectedFacebookPage'];
@@ -10,7 +12,7 @@
 						
 						$fbPageId =  $selectedFacebookPage;
 ?>
-						<h3>Facebook Pages</h3>
+						<h4>Facebook Page</h4>
 						<p><?= $_SESSION['userInformation']->$selectedFacebookPage->pageName; ?></p>
                         
 <?php

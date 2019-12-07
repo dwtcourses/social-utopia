@@ -9,7 +9,7 @@ $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
     
 if ( !isset ( $_SESSION['userInformation']->$selectedFacebookPage->google ) ) {
 ?>
-<h3>Google My Business</h3>
+<h4>Google My Business</h4>
 <p><a href="googleRedirect.php"><input type="button" id="loginGoogle" class="btn btn-primary"  value = "Login | Google "/></a></p>
 
 <?php
@@ -45,7 +45,7 @@ if ( !isset ( $_SESSION['userInformation']->$selectedFacebookPage->google ) ) {
 	//	print_r (json_decode($server_output));
 	//echo'</pre>';
 } else if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation ) ){
-    echo '<h3>Google</h3>';
+    echo '<h4>Google</h4>';
     echo '<p><a href="logout.php?logOutGoogle=' . $selectedFacebookPage . '">Log Out</a></p>';
     echo $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation->locationName;
 }

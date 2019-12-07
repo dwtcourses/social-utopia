@@ -8,3 +8,6 @@
 
 <!-- Custom Global JavaScript -->
 <script src="./_js/global.js"></script>
+
+<!-- AwesomeFont Icons API -->
+<script src="https://kit.fontawesome.com/e5a4f58ad1.js" crossorigin="anonymous"></script>

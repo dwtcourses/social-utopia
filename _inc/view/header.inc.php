@@ -3,6 +3,7 @@
 ?>
 <html>
 	<head>
+        
 		<?php 
         // Load required javascript and css files
             require("js.inc.php");
@@ -27,6 +28,7 @@
 		</header>
 		
 			<div class="jumbotron">
-				<h1>GC Social Utopia</h1>
+				<h1>Social Utopia</h1>
+                <p>A social media management environment built by Interactive Utopia / Gilberto Cortez</p>
 			</div>
 			<div class="container">

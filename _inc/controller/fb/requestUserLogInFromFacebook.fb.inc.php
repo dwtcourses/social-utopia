@@ -5,5 +5,5 @@
 		$loginUrl = $helper->getLoginUrl('https://dev.interactiveutopia.com/socialMediaApp/login-callback.php', $permissions);
 		
 		// Print html for user to click to be redirected to Facebook
-		echo '<a href="' . $loginUrl . '"><input type = "button" id = "loginFacebook" class = "btn btn-primary"  value = "Login | Facebook "/></a>';
+		echo '<a href="' . $loginUrl . '"><input type = "button" id = "loginFacebook" class = "btn btn-primary"  value = "Login with Facebook "/></a>';
 		//echo '<li><a href="' . $loginUrl . '">Log in with Facebook!</a></li>';

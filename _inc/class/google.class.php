@@ -6,7 +6,7 @@ class googleCustom {
     public $selectedFacebookPage;
     
     function __construct(){
-		$this->selectedFacebookPage = $_SESSION['lastFbPageToManage'];
+		$this->selectedFacebookPage = $_SESSION['userInformation']->lastManagedPgId;
 	}
     
     function sendMessage( $postMessage = '' ) {

@@ -2,6 +2,7 @@
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 
 if ( !isset( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn ) ) {
+    echo '<h4>LinkedIn</h4>';
     echo '<a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=' . LINKEDIN_CLIENT_ID . '&redirect_uri=' . LINKEDIN_LOGIN_REDIRECT_URI . '&state=fooobar&scope=' . LINKEDIN_SCOPE . '"><input type="button" id="loginLinkedIn" class="btn btn-primary"  value = "Login | LinkedIn "/></a>';
     } else {
         $ch = curl_init();
@@ -24,7 +25,7 @@ if ( !isset( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn ) ) {
     //    echo '</pre>';
 
         // Get US Content
-        echo '<h3>LinkedIn</h3>';
+        echo '<h4>LinkedIn</h4>';
         echo '<p>' . $user_data->firstName->localized->en_US . ' ' . $user_data->lastName->localized->en_US . ' | <a href="logout.php?logOutLinkedIn=' . $selectedFacebookPage . '">Log Out</a></p>';
 
     // Save company to be managed by FB page to user session if it was just selected

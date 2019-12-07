@@ -60,10 +60,10 @@ try {
     $_SESSION['userFacebookId'] = $queryResults2['facebookId'];
     $_SESSION['userInformation'] = unserialize ( $queryResults2['tokens'] );
     
-    echo '<pre>';
+/*    echo '<pre>';
         //print_r( $queryResults2 );
         print_r( $_SESSION );
-    echo '</pre>';
+    echo '</pre>';*/
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

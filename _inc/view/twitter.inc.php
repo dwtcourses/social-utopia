@@ -4,7 +4,7 @@ $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 
 if ( !isset( $_SESSION['userInformation']->$selectedFacebookPage->twitter ) ) {
 ?>
-	<h3>Twitter</h3>
+	<h4>Twitter</h4>
 	<p class=""><a href="twitterRedirect.php"><input type="button" id="loginTwitter" class="btn btn-primary"  value = "Login | Twitter "/></a></p>
 <?php
 }

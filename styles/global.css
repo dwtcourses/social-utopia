@@ -6,16 +6,49 @@ body {
 }
 h3 {margin: 0;}
 
+#facebookLogInDiv {
+    width: 50%;
+    background-color: orange;
+    border-radius: 30px;
+    padding: 3% 5%;
+    margin: auto;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#facebookLogInDiv p {
+    font-size: 1.5rem;
+    color: white;
+}
+
+#facebookLogInDiv i {
+    font-size: 8rem;
+    color: white;
+}
+
 .bg-grey {
   background-color: #f6f6f6;
 }
 .jumbotron {
   	background-color: #f4511e;
-  	color: #fff;
+    background-image: url("../images/homeHeader.svg");
+  	background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
   	padding: 50px 25px;
+    text-align: center;
 	font-family: Montserrat, sans-serif;
-	text-align: center;
-	margin-bottom: 10px;
+	
+}
+.jumbotron h1 { 
+    color: white;
+    text-shadow: 2px 2px 10px black;
+    font-size: 8rem;
+}
+.jumbotron p { 
+    color: white;
+    text-shadow: 2px 2px 8px black;
+    font-size: 1.5rem;
 }
 
 .container-fluid {
