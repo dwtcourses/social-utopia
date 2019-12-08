@@ -3,19 +3,25 @@
 // Contains left sidebar, account manager and navigator
 
 					if ( isset($_GET['manageSelectedFacebookPage']) || isset($_SESSION['lastFbPageToManage']) ) {
-						if ( isset($_GET['manageSelectedFacebookPage']) ) {
+						
+                        if ( isset($_GET['manageSelectedFacebookPage']) ) {
 							$selectedFacebookPage = $_GET['manageSelectedFacebookPage'];
 							$_SESSION['lastFbPageToManage'] = $selectedFacebookPage;
 						}
-						if ( isset($_SESSION['lastFbPageToManage']) ) 
+						
+                        if ( isset($_SESSION['lastFbPageToManage']) ) 
 							$selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 						
 						$fbPageId =  $selectedFacebookPage;
-?>
+                        
+                        echo '<pre>';
+                            //print_r($_SESSION);
+                        echo '</pre>';
+// PHP Close ?>
 						<h4>Facebook Page</h4>
 						<p><?= $_SESSION['userInformation']->$selectedFacebookPage->pageName; ?></p>
                         
-<?php
+<?php // PHP Start
 					$_SESSION['userInformation']->lastManagedPgId = $_SESSION['lastFbPageToManage'];
                     }
 					else {

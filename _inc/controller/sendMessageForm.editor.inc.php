@@ -44,7 +44,7 @@
 <?php	
 					}
 ?>
-								<div class="form-group">
+								<div class="form-group" id="msgEditorForm">
 									<label for="postMessage">Message:</label>
 									<textarea id="postMessage" name="postMessage" class="form-control"></textarea><br>
 								</div>

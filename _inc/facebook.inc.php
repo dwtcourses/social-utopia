@@ -17,7 +17,10 @@ if( !isset( $_SESSION['userInformation'] )) {
         $queryResults3 = $queryRequest3->fetch();
         //$_SESSION['userFacebookId'] = $queryResults3['facebookId'];
         $_SESSION['userInformation'] = unserialize ( $queryResults3['tokens'] );
+        
+        // Check to see if its not set
         if (!isset($_SESSION['lastFbPageToManage'])) {
+            // Check to see if it is set, then 
             if (isset($_SESSION['userInformation']->lastManagedPgId)) $_SESSION['lastFbPageToManage'] = $_SESSION['userInformation']->lastManagedPgId;
             else $_SESSION['lastFbPageToManage'] = '';
         }
@@ -63,10 +66,10 @@ try {
     $_SESSION['userFacebookId'] = $queryResults2['facebookId'];
     $_SESSION['userInformation'] = unserialize ( $queryResults2['tokens'] );
     
-/*    echo '<pre>';
+    echo '<pre>';
         //print_r( $queryResults2 );
         print_r( $_SESSION );
-    echo '</pre>';*/
+    echo '</pre>';
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

@@ -27,7 +27,7 @@ $submitJson = '{
     //echo $submitJson;
 	
     // Set connection variables and provide access token
-    $selectedFacebookPage = $this->selectedFacebookPage;
+    $selectedFacebookPage = $_SESSION['userInformation']->lastManagedPgId;
     $locationUrl = $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation->name;
 	$url = 'https://mybusiness.googleapis.com/v4/' . $locationUrl . '/localPosts';
 	$access_token = $_SESSION['userInformation']->$selectedFacebookPage->google->google_user_token['access_token'];
