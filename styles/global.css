@@ -107,3 +107,11 @@ textarea#postMessage {
 	background-position: bottom right;
 	background-repeat: no-repeat;
 }
+
+.accountEditorContainer{
+    border-right: 4px dotted orange;
+    margin-bottom: 1rem;
+}
+.msgEditorViewContainer{
+    border-bottom: 4px dotted orange;
+}

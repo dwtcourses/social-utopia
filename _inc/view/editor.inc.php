@@ -3,8 +3,8 @@
 
 ?>
 			<div class="container-fluid">
-				<div class="row">
- 					<div class="col-md-3">
+				<div class="row msgEditorViewContainer">
+ 					<div class="col-md-3 accountEditorContainer">
 					    <?php 
                             // Load account selector controller
                             require ('./_inc/controller/accounts.editor.inc.php'); 
