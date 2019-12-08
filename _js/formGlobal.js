@@ -1,4 +1,5 @@
 // JavaScript Document
+
 // AJAX Call to Send Message
 $(document).ready(function (e) {
  $("#form").on('submit',(function(e) {

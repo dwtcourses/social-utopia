@@ -46,7 +46,8 @@
 ?>
 								<div class="form-group" id="msgEditorForm">
 									<label for="postMessage">Message:</label>
-									<textarea id="postMessage" name="postMessage" class="form-control"></textarea><br>
+									<textarea id="postMessage" name="postMessage" class="form-control" onkeyup="countChar(this)"></textarea><br>
+                                    <div id="charNum"></div><br/>
 								</div>
 								<div class="form-group">
 									<label for="linkURL">Link URL:</label>

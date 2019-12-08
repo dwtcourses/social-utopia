@@ -5,3 +5,13 @@ $(document).ready(function () {
 		window.location = window.location.href.replace(/#.*/, '');
 	}
 });
+
+function countChar(val) {
+        var len = val.value.length;
+        if (len >= 500) {
+          val.value = val.value.substring(0, 500);
+        } else {
+          $('#charNum').text(len + ' characters of 280 (Twitter Max).');
+         //$('#charNum').text(len + ' characters of 280 (Twitter Max). ' + (280 - len) + ' remaining');
+        }
+      }
