@@ -1,32 +1,37 @@
 <?php
 // Handler for Twitter user auth token
-session_start();
-
-
-
-// Load composer required files
-require_once "../vendor/autoload.php";
-
-$client = new Google_Client();
-$client->setAuthConfig('../_inc/_private/client_secret.json');
-$client->addScope('https://www.googleapis.com/auth/business.manage');
-$client->setRedirectUri('https://' . $_SERVER['HTTP_HOST'] . '/socialMediaApp/tokenHandling/googleHandler.php');
-
-$client->authenticate($_GET['code']);
-//$_SESSION['google_token'] = $client->getAccessToken();
-
+// Require loader file
+require_once('../_inc/loader.inc.php');
 // Get current managed page
-$selectedFacebookPage = $_SESSION['lastFbPageToManage'];
-// Store token information into user session
-$_SESSION['userInformation']->$selectedFacebookPage->google = new stdClass();
-$_SESSION['userInformation']->$selectedFacebookPage->google->google_user_token = $client->getAccessToken();
+$selectedFacebookPage = $_SESSION['userInformation']->lastManagedPgId;
 
-// Redirect user
-header('Location: https://dev.interactiveutopia.com/socialMediaApp?googleLoggedIn=true');
+// Star new Google API Instance
+$client = new Google_Client();
+// Provide credentials
+$client->setAuthConfig('../_inc/_private/client_secret.json');
+
+// Check to see if there is no google account stored on page
+// If there is not then log in user
+if ( empty ($_SESSION['userInformation']->$selectedFacebookPage->google )){
+    // Set scope required
+    $client->addScope('https://www.googleapis.com/auth/business.manage');
+    // Set redirect Url after user log in in Google server
+    $client->setRedirectUri('https://' . $_SERVER['HTTP_HOST'] . '/socialMediaApp/tokenHandling/googleHandler.php');
+    // Get autrizaton code from url
+    $client->authenticate($_GET['code']);
+
+
+    // Store token information into user session
+    $_SESSION['userInformation']->$selectedFacebookPage->google = new stdClass();
+    $_SESSION['userInformation']->$selectedFacebookPage->google->google_user_token = $client->getAccessToken();
+
+    // Redirect user
+    header('Location: https://dev.interactiveutopia.com/socialMediaApp?googleLoggedIn=true');
+}
 
 // Debug Stuff
 //echo '<pre>';
     //print_r($_REQUEST);
     //print_r($access_token);
-   // echo'<pre>';print_r($_SESSION);echo'</pre>';
+    echo'<pre>';print_r($_SESSION['userInformation']->$selectedFacebookPage);echo'</pre>';
 //echo '<pre>';

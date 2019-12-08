@@ -6,6 +6,19 @@
 // Get current managed page
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 
+$tokenCreatedOn = $_SESSION['userInformation']->$selectedFacebookPage->google->google_user_token['created'];
+$tokenExpiresIn = $_SESSION['userInformation']->$selectedFacebookPage->google->google_user_token['expires_in'];
+$expirationDateS = $tokenCreatedOn + $tokenExpiresIn;
+    
+// Current date
+$date = new DateTime();
+    
+// Expiration date
+$expirationDate = new DateTime();
+$expirationDate->setTimestamp($expirationDateS);
+
+if ( $expirationDate <= $date ) unset($_SESSION['userInformation']->$selectedFacebookPage->google);
+
 // Log In Redirect
 if ( !isset ( $_SESSION['userInformation']->$selectedFacebookPage->google ) ) {
     // Initiate Google Client API Class
