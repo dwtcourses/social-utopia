@@ -8,9 +8,13 @@ async function sendFbMsg(){
     $fbPostFetch = await fetch();
 }
 
-onmessage = function(e) {
+onmessage = function(formContentObject) {
   //console.log('Worker: Message received from main script');
-  let result = e.data.testItem;
-    console.log(result);
+  let result = formContentObject.data; 
+    // Display the values
+    //console.log('received object is ' + result ) ;
+    console.log('received object is ' + JSON.stringify(result) ) ;
+    let formConentObj = JSON.parse( JSON.stringify(result) );
+    console.log( 'message is ' + formConentObj.postMessage );
     setTimeout(function(){ postMessage('Message sent aight'); }, 3000);
 }
