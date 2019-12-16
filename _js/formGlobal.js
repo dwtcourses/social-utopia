@@ -1,9 +1,24 @@
 // JavaScript Document
-
 // AJAX Call to Send Message
 $(document).ready(function (e) {
  $("#form").on('submit',(function(e) {
+// Prevent form from auto submitting and changing page
   e.preventDefault();
+    if (window.Worker) {
+        // Start web workers
+        let fbWorker = new Worker('./_js/workers/facebookWorker.js');
+        // Send information to worker
+        fbWorker.postMessage({ 'testItem' : 'true that'});
+        
+        // Get information from worker
+        fbWorker.onmessage = function(e) {
+            console.log('Message received from worker: ' + e.data);
+            fbWorker.terminate();
+            console.log('Worker terminated');
+        } // End worker message response function
+    } // End if window.worker
+
+
   $.ajax({
          url: "app.handler.php",
    type: "POST",
