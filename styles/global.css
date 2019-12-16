@@ -115,3 +115,7 @@ textarea#postMessage {
 .msgEditorViewContainer{
     border-bottom: 4px dotted orange;
 }
+
+.fbPgSelector {
+    margin: 0 0 1rem 0;
+}

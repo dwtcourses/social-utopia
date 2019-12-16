@@ -15,3 +15,8 @@ function countChar(val) {
          //$('#charNum').text(len + ' characters of 280 (Twitter Max). ' + (280 - len) + ' remaining');
         }
       }
+
+function fbPgSelectorChange(selectObject){
+    //alert(selectObject.value);
+    window.location.href = "https://dev.interactiveutopia.com/socialMediaApp/?manageSelectedFacebookPage=" + selectObject.value;
+}

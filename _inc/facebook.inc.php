@@ -66,13 +66,13 @@ try {
     $_SESSION['userFacebookId'] = $queryResults2['facebookId'];
     $_SESSION['userInformation'] = unserialize ( $queryResults2['tokens'] );
     
-    echo '<pre>';
-        $date = new DateTime();
-        $date->setTimestamp(1575835691);
-        echo date_format($date, 'U = Y-m-d H:i:s') . "\n";
+    //echo '<pre>';
+        //$date = new DateTime();
+        //$date->setTimestamp(1575835691);
+        //echo date_format($date, 'U = Y-m-d H:i:s') . "\n";
         //print_r( $queryResults2 );
-        print_r( $_SESSION );
-    echo '</pre>';
+        //print_r( $_SESSION );
+    //echo '</pre>';
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
