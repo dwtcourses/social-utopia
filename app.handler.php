@@ -25,6 +25,7 @@ $linkedInRequest = $_POST['linkedInToken'] ?? '';
 $linkedInRequest = $_POST['googleToken'] ?? '';
 $postMessage = $_POST['postMessage'] ?? '';
 $linkURL = $_POST['linkURL'] ?? '';
+if ( $linkURL != '') { $postMessage = $postMessage . ' at ' . $linkURL; }
 
 // If photo use photo upload function
 	if(  isset($_POST['imgData']) ) {
@@ -45,7 +46,6 @@ $linkURL = $_POST['linkURL'] ?? '';
 			if ( isset ( $_SESSION['imgTempUrl'] ) ){
                 $_twitter->uploadTwitterPicture($_SESSION['imgTempUrl'], $postMessage);
             } else {
-                if ( $linkURL != '') { $postMessage = $postMessage . ' at ' . $linkURL; }
                 if ( $postMessage != '') $_twitter->sendMessage( $postMessage );
                     else echo 'Twitter: Cannot send empty message... | ';
             }
