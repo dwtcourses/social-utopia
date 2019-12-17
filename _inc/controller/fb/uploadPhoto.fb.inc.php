@@ -1,7 +1,7 @@
 <?php
 $data = [
 		'message' => $photoMessage,
-		'source' => $this->fb->fileToUpload( $postImagePath ),
+		'source' => $this->fb->fileToUpload( $_SESSION['imgTempUrl'] ),
 	];
 	try {
 			// Upload to a user's profile. The photo will be in the

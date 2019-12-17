@@ -15,8 +15,8 @@ $_google = new googleCustom();
 
 // Set variables
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
-$targetNetworks = json_decode($_POST['targetNetwork']) ?? '';
-//print_r($targetNetworks);
+$targetNetworks = json_decode($_POST['targetNetwork'] ?? '');
+//print_r($_POST);
 // Form values
 $facebookPageId = $_POST['facebookPageId'] ?? '';
 $facebookToken = $_POST['facebookToken'] ?? '';
@@ -27,18 +27,28 @@ $postMessage = $_POST['postMessage'] ?? '';
 $linkURL = $_POST['linkURL'] ?? '';
 
 // If photo use photo upload function
-	if(  !empty($_FILES['postImage']['tmp_name']) ) {
+	if(  isset($_POST['imgData']) ) {
 		require_once( '_inc/photoUploader.inc.php' );
 	} else {
 		if ( isset( $targetNetworks->facebookToken ) ) {
-            if ( $postMessage != '') $_fb->sendMessage( $postMessage, $facebookToken, $facebookPageId, $linkURL );
-                else echo 'Facebook: Cannot send empty message... | ';
+            // Check to see if temp image is stored on server
+            if ( isset ( $_SESSION['imgTempUrl'] ) ){
+                $_fb->uploadPhoto( $postMessage, $facebookToken, $facebookPageId, $_SESSION['imgTempUrl'] );
+            } else {
+                if ( $postMessage != '') $_fb->sendMessage( $postMessage, $facebookToken, $facebookPageId, $linkURL );
+                    else echo 'Facebook: Cannot send empty message... | ';
+            }
         }
 	// Twitter Section
 		if ( isset( $targetNetworks->twitterToken ) ) {
-			if ( $linkURL != '') { $postMessage = $postMessage . ' at ' . $linkURL; }
-			if ( $postMessage != '') $_twitter->sendMessage( $postMessage );
-                else echo 'Twitter: Cannot send empty message... | ';
+            // Check to see if temp image is stored on server
+			if ( isset ( $_SESSION['imgTempUrl'] ) ){
+                $_twitter->uploadTwitterPicture($_SESSION['imgTempUrl'], $postMessage);
+            } else {
+                if ( $linkURL != '') { $postMessage = $postMessage . ' at ' . $linkURL; }
+                if ( $postMessage != '') $_twitter->sendMessage( $postMessage );
+                    else echo 'Twitter: Cannot send empty message... | ';
+            }
 		}
     // LinkedIn Section
         if ( isset( $targetNetworks->linkedInToken ) ) {

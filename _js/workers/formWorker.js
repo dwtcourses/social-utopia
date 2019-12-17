@@ -2,8 +2,8 @@
 // This script will handle form submission data and deliver it to the social media network
 // Facebook
 
-console.log('New form worker started')
-const host = 'https://dev.interactiveutopia.com/socialMediaApp'
+console.log('New form worker started');
+const host = 'https://dev.interactiveutopia.com/socialMediaApp';
 
 // Function will send form data to server and then response back to main thread
 async function sendFbMsg(formConentObj){

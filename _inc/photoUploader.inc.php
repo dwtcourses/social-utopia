@@ -1,32 +1,27 @@
 <?php
 $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt'); // valid extensions
+echo 'upload started | ';
 $postImagePath = 'uploads/'; // upload directory
-if(!empty( $postMessage || $_FILES['postImage'] ) ) {
-	$img = $_FILES['postImage']['name'];
-	$tmp = $_FILES['postImage']['tmp_name'];
-	// get uploaded file's extension
-	$ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
-	// can upload same image using rand function
-	$final_image = rand(1000,1000000).$img;
-	// check's valid format
-	if(in_array($ext, $valid_extensions)) { 
-		$postImagePath = $postImagePath.strtolower($final_image); 
-		if(move_uploaded_file($tmp,$postImagePath)) {
-			
-			
-			//echo "<img src='$postImagePath' />";
-			//echo 'token is ' . $facebookToken;
-			
-			// Post photo in Facebook
-			$_fb->uploadPhoto( $postMessage, $facebookToken, $facebookPageId, $postImagePath );
-			
-			if ( isset ( $_SESSION['twitterLoggedIn'] ) ) {	
-				// Tweet Picture
-				$_twitter->uploadTwitterPicture($postImagePath, $postMessage);
-			}
-		}
-	} 
-	else {
-		echo 'invalid';
-	}
+
+if( isset($_POST['imgData']) ) {
+    $imgData = $_POST['imgData'];
+    $randomNumber = rand();
+    $output_file = $postImagePath . $randomNumber . '.png';
+    // open the output file for writing
+    $ifp = fopen( $output_file, 'wb' ); 
+
+    // split the string on commas
+    // $data[ 0 ] == "data:image/png;base64"
+    // $data[ 1 ] == <actual base64 string>
+    $data = explode( ',', $imgData );
+
+    // we could add validation here with ensuring count( $data ) > 1
+    fwrite( $ifp, base64_decode( $data[ 1 ] ) );
+
+    // clean up the file resource
+    fclose( $ifp ); 
+    
+    $_SESSION['imgTempUrl'] = APP_URL . $output_file;
+    //echo $output_file;
+    echo 'Upload successfull at ' . $_SESSION['imgTempUrl'];
 }

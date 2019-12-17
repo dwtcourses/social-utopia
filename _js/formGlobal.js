@@ -108,5 +108,57 @@ $(document).ready(function (e) {
             $("#form")[0].reset();
         }
     } // End if window.worker
- }));
+ }));// End if form submit
 });
+
+async function uploadImage(imageData){
+    console.log('Image upload started');
+    const host = 'https://dev.interactiveutopia.com/socialMediaApp';
+    var preview = document.getElementById('previewImageHolder');
+    var file    = document.getElementById('postImage').files[0];
+    var reader  = new FileReader();
+
+    reader.addEventListener("load", async function () {
+        preview.src =  reader.result ;
+        // Try to post information via postData() set below
+        try {
+            // Wait for information to be sent via postData() and store response
+            const data = await postData(host + '/app.handler.php', { imgData : reader.result });
+            // Process response to a text string
+            data.text().then(function (text) {
+              // send text response back to main thread
+              console.log(text);
+            });
+        } catch (error) {
+            // If there is an error, log it to the console
+            console.error(error);
+        }
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+    
+    async function postData(url = '', data = {}) {
+        // Encode data for POST submission
+        var params = new URLSearchParams();
+        for(i in data){
+           params.append(i,data[i]);
+        }
+        // Send form data to server for procesing and await for the response
+        const response = await fetch(url, {
+            method: 'POST', 
+            mode: 'cors', 
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', 
+            referrer: 'no-referrer',
+            body: params
+        });
+        // Return fetch response
+        return response;
+    }
+}

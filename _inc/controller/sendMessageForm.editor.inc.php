@@ -38,9 +38,9 @@
 								</div>
 								<div class="form-group">
 									<label for="postImage">Post Image:</label>
-									<input type="file" class="form-control" id="postImage" name="postImage">
+									<input type="file" class="form-control" id="postImage" name="postImage" accept="image/*" onChange="uploadImage(this)">
 								</div>
-								<div id="preview"><img src="https://img.icons8.com/wired/2x/preview-pane.png" /></div><br>
+								<div id="preview"><img src="https://img.icons8.com/wired/2x/preview-pane.png" id="previewImageHolder" /></div><br>
 								<div id="responseViewDiv"></div><br>
 								<button type="submit" id="sendMessageBtn" name="sendMessageBtn" class="btn btn-primary" value="Send Message" <?php if( !isset( $_SESSION['userInformation'] ) ) echo 'disabled'; ?>>Send Message</button>
 							</form>
