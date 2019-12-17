@@ -53,14 +53,19 @@ $linkURL = $_POST['linkURL'] ?? '';
     // LinkedIn Section
         if ( isset( $targetNetworks->linkedInToken ) ) {
             $selectedCompanyTarget = str_replace("urn:li:organization:", "", $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget);
-            
-            if ( $postMessage != '') $_linkedIn->sendMessage( $postMessage );
-                else echo 'Linked In: Cannot send empty message... | ';
+            if ( $postMessage != '') {
+                if ( isset ( $_SESSION['imgTempUrl'] ) ){
+                    // Sent message with photo
+                    $_linkedIn->uploadPhoto( $_SESSION['imgTempLocalUrl'], $postMessage ); 
+                } else {
+                    $_linkedIn->sendMessage( $postMessage ); 
+                }
+            } else echo 'Linked In: Cannot send empty message... | ';
 
         }
     // Google My Business API Section
         if ( isset( $targetNetworks->googleToken ) ) {
-            if ( $postMessage != '') $_google->sendMessage( $postMessage );
+            if ( $postMessage != '') ;//$_google->sendMessage( $postMessage );
                 else echo 'Google My Business: Cannot send empty message...';
         }
 	}
