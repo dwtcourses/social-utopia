@@ -60,6 +60,7 @@ if ( !isset ( $_SESSION['userInformation']->$selectedFacebookPage->google ) ) {
     if ( $expirationDate <= $date ) {
         echo 'Token has expired';
         echo '<p><a href="googleRedirect.php">Refresh Token</a></p>';
+        echo '<p><a href="logout.php?logOutGoogle=' . $selectedFacebookPage . '">Log Out</a></p>';
     } else {
         echo '<p><a href="logout.php?logOutGoogle=' . $selectedFacebookPage . '">Log Out</a></p>';
         echo $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation->locationName;

@@ -4,81 +4,109 @@ $(document).ready(function (e) {
      $("#form").on('submit',(function(e) {
     // Prevent form from auto submitting and changing page
       e.preventDefault();
+    // Clear response div
+    $("#responseViewDiv").html('');
     // Get from data
     let receivedFormData = new FormData(this);
     // Check for browser support of web workers
-        if (window.Worker) {
-            // Start web workers
-            let fbWorker = new Worker('./_js/workers/facebookWorker.js');
-            // Set up information to send to worker
-            let formContentObject = new Object();
-            for(var pair of receivedFormData.entries()) {
-               //console.log(pair[0]+ ', '+ pair[1]);
+    if (window.Worker) {
+        // Set up information to send to worker
+        // Create new form data object
+        let formContentObject = new Object();
+        // Crete new target network object
+        let targetNetwork = new Object();
+    
+        // Loop thru received form data to generate object data
+        for(var pair of receivedFormData.entries()) {
                 let inputName = pair[0];
-                formContentObject[inputName] = pair[1];
+                switch (inputName) {
+                    case 'facebookToken':
+                        formContentObject[inputName] = pair[1];
+                        targetNetwork['facebookToken'] = '0';
+                        break;
+                    case 'twitterToken':
+                        formContentObject[inputName] = pair[1];
+                        targetNetwork['twitterToken'] = '1';
+                        break;
+                    case 'linkedInToken':
+                        formContentObject[inputName] = pair[1];
+                        targetNetwork['linkedInToken'] = '2';
+                        break;
+                    case 'googleToken':
+                        formContentObject[inputName] = pair[1];
+                        targetNetwork['googleToken'] = '3';
+                        break;
+                    default:
+                        formContentObject[inputName] = pair[1];
+                }
+        } // End for loop
+        formContentObject['targetNetwork'] = JSON.stringify(targetNetwork);
+        let responseDataHtml = '';
+        for( var selectedNetwork in targetNetwork ){
+            console.log( targetNetwork[selectedNetwork] );
+            
+            switch ( targetNetwork[selectedNetwork] ) {
+                    case '0':
+                    // Facebook
+                        let fbWorker = new Worker('./_js/workers/formWorker.js');
+                        formContentObject['targetNetwork'] = JSON.stringify( { facebookToken: 0 } );
+                        // Post information to worker
+                        fbWorker.postMessage( formContentObject );
+                        // Get information from worker
+                        fbWorker.onmessage = function(e) {
+                            console.log('Facebook: Message received from worker: ' + e.data);
+                            $("#responseViewDiv").append(e.data);
+                            fbWorker.terminate();
+                            console.log('Facebook: Worker terminated');
+                        }
+                        break;
+                    case '1':
+                    // Twitter
+                        let twitterWorker = new Worker('./_js/workers/formWorker.js');
+                        formContentObject['targetNetwork'] = JSON.stringify( { twitterToken: 0 } );
+                        // Post information to worker
+                        twitterWorker.postMessage( formContentObject );
+                        // Get information from worker
+                        twitterWorker.onmessage = function(e) {
+                            console.log(' Twitter: Message received from worker: ' + e.data);
+                            $("#responseViewDiv").append(e.data);
+                            twitterWorker.terminate();
+                            console.log('Twitter: Worker terminated');
+                        }
+                        break;
+                    case '2':
+                    // LinkedIn
+                        let linkedInWorker = new Worker('./_js/workers/formWorker.js');
+                        formContentObject['targetNetwork'] = JSON.stringify( { linkedInToken: 0 } );
+                        // Post information to worker
+                        linkedInWorker.postMessage( formContentObject );
+                        // Get information from worker
+                        linkedInWorker.onmessage = function(e) {
+                            console.log(' LinkedIn: Message received from worker: ' + e.data);
+                            $("#responseViewDiv").append(e.data);
+                            linkedInWorker.terminate();
+                            console.log('LinkedIn: Worker terminated');
+                        }
+                        break;
+                    case '3':
+                    // Google
+                        let googleWorker = new Worker('./_js/workers/formWorker.js');
+                        formContentObject['targetNetwork'] = JSON.stringify( { googleToken: 0 } );
+                        // Post information to worker
+                        googleWorker.postMessage( formContentObject );
+                        // Get information from worker
+                        googleWorker.onmessage = function(e) {
+                            console.log(' Google: Message received from worker: ' + e.data);
+                            $("#responseViewDiv").append(e.data);
+                            googleWorker.terminate();
+                            console.log('Google: Worker terminated');
+                        }
+                        break;
+                    default:
+                        console.log('No network selected')
             }
-            // Post information to worker
-            fbWorker.postMessage( formContentObject );
-            //console.log('sent object is ' + JSON.stringify(formContentObject) ) ;
-
-            // Get information from worker
-            fbWorker.onmessage = function(e) {
-                console.log('Message received from worker: ' + e.data);
-                fbWorker.terminate();
-                console.log('Worker terminated');
-            } // End worker message response function
-        } // End if window.worker
-
-
-      /*$.ajax({
-             url: "app.handler.php",
-       type: "POST",
-       data:  new FormData(this),
-       contentType: false,
-             cache: false,
-       processData:false,
-       beforeSend : function()
-       {
-        //$("#preview").fadeOut();
-        $("#err").fadeOut();
-       },
-       success: function(data)
-          {
-
-         // view uploaded file.
-         $("#preview").html(data).fadeIn();
-         $("#form")[0].reset(); 
-
-          },
-         error: function(e) 
-          {
-        $("#err").html(e).fadeIn();
-          }          
-        });*/
+            $("#form")[0].reset();
+        }
+    } // End if window.worker
  }));
 });
-
-
-
-
-
-/*
-$("#sendMessageBtn").click(function(){
-	if ( $("#facebokPageId").val() == 'false' ){
-		alert ( 'Please select page to post to' );
-	} else {
-		if ( $("#postMessage").val() != '') {	
-		  $.post("app.handler.php",
-		  {
-			facebokPageId: 		$("#facebokPageId").val(),
-			facebookToken: 		$("#facebookToken").val(),
-			twitterToken: 		$("#twitterToken").val(),
-			postMessage: 		$("#postMessage").val(),
-			linkURL: 			$("#linkURL").val()
-		  },
-		  function(data, status){
-			alert("Data: " + data + "\nStatus: " + status);
-		  });
-		} else alert ( 'Post Message is Empty' );	
-	}
-});*/

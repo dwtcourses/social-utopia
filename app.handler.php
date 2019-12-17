@@ -13,43 +13,45 @@ $_linkedIn = new linkedInCustom();
 // Build Google API Class
 $_google = new googleCustom();
 
-$selectedFacebookPage = $_SESSION['lastFbPageToManage'];
-
-//print_r($_REQUEST);
-//print_r($_POST);
 // Set variables
-	$facebookPageId = $_POST['facebookPageId'] ?? '';
-	$facebookToken = $_POST['facebookToken'] ?? '';
-	$twitterToken = $_POST['twitterToken'] ?? '';
-    $linkedInRequest = $_POST['linkedInToken'] ?? '';
-    $linkedInRequest = $_POST['googleToken'] ?? '';
-	$postMessage = $_POST['postMessage'] ?? '';
-	$linkURL = $_POST['linkURL'] ?? '';
+$selectedFacebookPage = $_SESSION['lastFbPageToManage'];
+$targetNetworks = json_decode($_POST['targetNetwork']) ?? '';
+//print_r($targetNetworks);
+// Form values
+$facebookPageId = $_POST['facebookPageId'] ?? '';
+$facebookToken = $_POST['facebookToken'] ?? '';
+$twitterToken = $_POST['twitterToken'] ?? '';
+$linkedInRequest = $_POST['linkedInToken'] ?? '';
+$linkedInRequest = $_POST['googleToken'] ?? '';
+$postMessage = $_POST['postMessage'] ?? '';
+$linkURL = $_POST['linkURL'] ?? '';
 
 // If photo use photo upload function
 	if(  !empty($_FILES['postImage']['tmp_name']) ) {
 		require_once( '_inc/photoUploader.inc.php' );
 	} else {
-		if ( $postMessage != '') $_fb->sendMessage( $postMessage, $facebookToken, $facebookPageId, $linkURL );
-                else echo 'Cannot send empty message...';
+		if ( isset( $targetNetworks->facebookToken ) ) {
+            if ( $postMessage != '') $_fb->sendMessage( $postMessage, $facebookToken, $facebookPageId, $linkURL );
+                else echo 'Facebook: Cannot send empty message... | ';
+        }
 	// Twitter Section
-		if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->twitter ) ) {
+		if ( isset( $targetNetworks->twitterToken ) ) {
 			if ( $linkURL != '') { $postMessage = $postMessage . ' at ' . $linkURL; }
 			if ( $postMessage != '') $_twitter->sendMessage( $postMessage );
-                else echo 'Cannot send empty message...';
+                else echo 'Twitter: Cannot send empty message... | ';
 		}
     // LinkedIn Section
-        if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget ) ) {
+        if ( isset( $targetNetworks->linkedInToken ) ) {
             $selectedCompanyTarget = str_replace("urn:li:organization:", "", $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget);
             
             if ( $postMessage != '') $_linkedIn->sendMessage( $postMessage );
-                else echo 'Cannot send empty message...';
+                else echo 'Linked In: Cannot send empty message... | ';
 
         }
     // Google My Business API Section
-        if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation ) ) {
+        if ( isset( $targetNetworks->googleToken ) ) {
             if ( $postMessage != '') $_google->sendMessage( $postMessage );
-                else echo 'Cannot send empty message...';
+                else echo 'Google My Business: Cannot send empty message...';
         }
 	}
 

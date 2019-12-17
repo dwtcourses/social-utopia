@@ -2,7 +2,7 @@
 // This script will handle form submission data and deliver it to the social media network
 // Facebook
 
-console.log('Facebook form submission handler worker is active')
+console.log('New form worker started')
 const host = 'https://dev.interactiveutopia.com/socialMediaApp'
 
 // Function will send form data to server and then response back to main thread

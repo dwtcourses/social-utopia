@@ -4,7 +4,7 @@ try {
             // Send Message
 			$res = $this->fb->sendRequest('POST', '/' . $pageId . '/feed', ['message' => $message, 'link' => $link ], $pageToken, 'eTag', 'v5.0');
             // Print success message
-			echo 'Message has been sent';
+			echo 'Facebook: Message has been sent';
 		} catch(Facebook\Exceptions\FacebookResponseException $e) {
                 echo 'Graph returned an error: '. $e->getMessage();
 				exit;

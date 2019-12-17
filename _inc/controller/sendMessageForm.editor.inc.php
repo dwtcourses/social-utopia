@@ -7,41 +7,24 @@
 								<input type="hidden" name="facebookPageId" id="facebookPageId" value="<?= $fbPageId; ?>">
 								<input type="hidden" name="facebookToken" id="facebookToken" value="<?= $_SESSION['userInformation']->$selectedFacebookPage->pageToken; ?>">
 <?php
-					} else {
-?>								<input type="hidden" name="facebookPageId" id="facebookPageId" value="false">
-								<input type="hidden" name="facebookToken" id="facebookToken" value="false">
-<?php
 					}
 // Twitter API
 					if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->twitter ) ) {					
 ?>
-								<input type="hidden" name="twitterToken" id="twitterToken" value="twitter">
+								<input type="hidden" name="twitterToken" id="twitterToken" value="true">
 <?php						
-					} else {
-?>
-								<input type="hidden" name="twitterToken" id="twitterToken" value="false">
-<?php	
 					}
 // LinkedIn API              
 					if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget ) ) {					
 ?>
-								<input type="hidden" name="linkedInToken" id="linkedInToken" value="linkedIn">
+								<input type="hidden" name="linkedInToken" id="linkedInToken" value="true">
 <?php						
-					} else {
-?>
-								<input type="hidden" name="linkedInToken" id="linkedInToken" value="false">
-<?php	
 					}
-					
 // Google API
                     if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation ) ) {					
 ?>
 								<input type="hidden" name="googleToken" id="googleToken" value="true">
 <?php						
-					} else {
-?>
-								<input type="hidden" name="googleToken" id="googleToken" value="false">
-<?php	
 					}
 ?>
 								<div class="form-group" id="msgEditorForm">
@@ -58,6 +41,7 @@
 									<input type="file" class="form-control" id="postImage" name="postImage">
 								</div>
 								<div id="preview"><img src="https://img.icons8.com/wired/2x/preview-pane.png" /></div><br>
+								<div id="responseViewDiv"></div><br>
 								<button type="submit" id="sendMessageBtn" name="sendMessageBtn" class="btn btn-primary" value="Send Message" <?php if( !isset( $_SESSION['userInformation'] ) ) echo 'disabled'; ?>>Send Message</button>
 							</form>
 							<div id="err"></div>
