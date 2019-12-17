@@ -21,7 +21,6 @@ if( isset($_POST['imgData']) ) {
     // clean up the file resource
     fclose( $ifp ); 
     
-    $_SESSION['imgTempBase64'] = $imgData;
     $_SESSION['imgTempUrl'] = APP_URL . $output_file;
     $_SESSION['imgTempLocalUrl'] = $_SERVER['DOCUMENT_ROOT'] . $output_file;
     //echo $output_file;

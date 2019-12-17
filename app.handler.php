@@ -65,9 +65,12 @@ $linkURL = $_POST['linkURL'] ?? '';
         }
     // Google My Business API Section
         if ( isset( $targetNetworks->googleToken ) ) {
-            if ( $postMessage != '') ;//$_google->sendMessage( $postMessage );
-                else echo 'Google My Business: Cannot send empty message...';
-        }
+            if ( $postMessage != '') {
+                if ( isset ( $_SESSION['imgTempUrl'] ) ){
+                    $_google->sendPhotoMessage( $postMessage, $linkURL );
+                } else $_google->sendMessage( $postMessage );
+            } else echo 'Google My Business: Cannot send empty message...';
+        } 
 	}
 
 //echo 'test complete';

@@ -15,4 +15,8 @@ class googleCustom {
     function sendMessage( $postMessage = '' ) {
             require $_SERVER['DOCUMENT_ROOT'] . '_inc/controller/google/sendMessage.google.php';
     }
+    
+    function sendPhotoMessage( $postMessage = '', $linkURL ) {
+            require $_SERVER['DOCUMENT_ROOT'] . '_inc/controller/google/sendPhotoMessage.google.php';
+    }
 }
