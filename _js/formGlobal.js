@@ -30,7 +30,7 @@ $(document).ready(function (e) {
         } // End if window.worker
 
 
-      $.ajax({
+      /*$.ajax({
              url: "app.handler.php",
        type: "POST",
        data:  new FormData(this),
@@ -54,7 +54,7 @@ $(document).ready(function (e) {
           {
         $("#err").html(e).fadeIn();
           }          
-        });
+        });*/
  }));
 });
 

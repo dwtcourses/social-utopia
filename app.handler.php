@@ -15,17 +15,19 @@ $_google = new googleCustom();
 
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 
+//print_r($_REQUEST);
+//print_r($_POST);
 // Set variables
 	$facebookPageId = $_POST['facebookPageId'] ?? '';
 	$facebookToken = $_POST['facebookToken'] ?? '';
 	$twitterToken = $_POST['twitterToken'] ?? '';
     $linkedInRequest = $_POST['linkedInToken'] ?? '';
- $linkedInRequest = $_POST['googleToken'] ?? '';
+    $linkedInRequest = $_POST['googleToken'] ?? '';
 	$postMessage = $_POST['postMessage'] ?? '';
 	$linkURL = $_POST['linkURL'] ?? '';
 
 // If photo use photo upload function
-	if(  $_FILES['postImage']['tmp_name'] != '' ) {
+	if(  !empty($_FILES['postImage']['tmp_name']) ) {
 		require_once( '_inc/photoUploader.inc.php' );
 	} else {
 		if ( $postMessage != '') $_fb->sendMessage( $postMessage, $facebookToken, $facebookPageId, $linkURL );
