@@ -4,6 +4,7 @@
 <html>
 	<head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Social Utopia - A social media management environment</title>
 		<?php 
         // Load required javascript and css files
             require("js.inc.php");
