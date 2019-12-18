@@ -5,6 +5,7 @@ session_start();
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 ?>
     <div>
+        <h3>Google My Business</h3>
 <?php
 $pgLocationInfo = $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation->name;
 $requestUrl = 'https://mybusiness.googleapis.com/v4/' . $pgLocationInfo . '/localPosts';

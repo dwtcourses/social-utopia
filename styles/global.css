@@ -118,7 +118,7 @@ textarea#postMessage {
 }
 
 /* Timeline Editor */
-#timelinesContainer {
-    max-height: 20vw;
+#timelinesContainer div {
+    height: 20vw;
     overflow: scroll;
 }
