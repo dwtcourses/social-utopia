@@ -116,3 +116,9 @@ textarea#postMessage {
 .fbPgSelector {
     margin: 0 0 1rem 0;
 }
+
+/* Timeline Editor */
+#timelinesContainer {
+    max-height: 20vw;
+    overflow: scroll;
+}
