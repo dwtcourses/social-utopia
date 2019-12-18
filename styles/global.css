@@ -5,7 +5,10 @@ body {
   color: #818181;
 }
 h3 {margin: 0;}
-
+.mainContainer{
+    max-width: 90vw;
+    margin: 0 auto;
+}
 #facebookLogInDiv {
     width: 50%;
     background-color: orange;
@@ -90,13 +93,6 @@ h3 {margin: 0;}
   color: #fff !important;
 }
 
-@media screen and (max-width: 768px) {
-  .col-sm-4 {
-    text-align: center;
-    margin: 25px 0;
-  }
-}
-
 /* Message Editor */
 textarea#postMessage {
 	height: 160px;
@@ -121,4 +117,25 @@ textarea#postMessage {
 #timelinesContainer div {
     height: 20vw;
     overflow: scroll;
+}
+
+/* Small Screens */
+@media screen and (max-width: 768px) {
+        .js-focus-visible {
+            width: 114vw;
+        }
+      .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+      }
+    .jumbotron h1 { 
+        color: white;
+        text-shadow: 2px 2px 10px black;
+        font-size: 6rem;
+    }
+    .accountEditorContainer{
+        border-bottom: 4px dotted orange;
+        border-right: none;
+        margin-bottom: 1rem;
+    }
 }

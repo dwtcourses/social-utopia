@@ -3,7 +3,7 @@
 ?>
 <html>
 	<head>
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<?php 
         // Load required javascript and css files
             require("js.inc.php");
@@ -31,4 +31,4 @@
 				<h1>Social Utopia</h1>
                 <p>A social media management environment built by Interactive Utopia / Gilberto Cortez</p>
 			</div>
-			<div class="container">
+			<div class="mainContainer">
