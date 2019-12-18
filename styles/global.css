@@ -113,6 +113,12 @@ textarea#postMessage {
 .fbPgSelector {
     margin: 0 0 1rem 0;
 }
+#preview{
+    text-align: center;
+}
+#preview img {
+    max-width: 85%;
+}
 
 /* Timeline Editor */
 #timelinesContainer div {
@@ -154,5 +160,8 @@ textarea#postMessage {
     .msgEditorViewContainer{
         width: 94vw;
         margin: 0 auto;
+    }
+    #preview img {
+        max-width: 85vw;
     }
 }
