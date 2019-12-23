@@ -13,7 +13,7 @@ async function afterStyles(){
 }
 
 async function getFacebookTimeline(){
-    const response = await fetch('https://dev.interactiveutopia.com/socialMediaApp/timelines/facebook.timeline.php');
+    const response = await fetch('./timelines/facebook.timeline.php');
     let timelinesContainerDiv = document.getElementById('timelinesContainer');
     if (document.getElementById('facebookTimelineDiv')){
         document.getElementById('facebookTimelineDiv').remove();
@@ -34,7 +34,7 @@ async function getFacebookTimeline(){
 }
 
 async function getGoogleTimeline(){
-    const response = await fetch('https://dev.interactiveutopia.com/socialMediaApp/timelines/google.timeline.php');
+    const response = await fetch('./timelines/google.timeline.php');
     let timelinesContainerDiv = document.getElementById('timelinesContainer');
     
     response.text().then(function (text) {
@@ -56,7 +56,7 @@ async function getGoogleTimeline(){
 }
 
 async function getTwitterTimeline(){
-    const response = await fetch('https://dev.interactiveutopia.com/socialMediaApp/timelines/twitter.timeline.php');
+    const response = await fetch('./timelines/twitter.timeline.php');
     let timelinesContainerDiv = document.getElementById('timelinesContainer');
     
     response.text().then(function (text) {
@@ -79,7 +79,7 @@ async function getTwitterTimeline(){
 
 
 async function getLinkedInTimeline(){
-    const response = await fetch('https://dev.interactiveutopia.com/socialMediaApp/timelines/linkedin.timeline.php');
+    const response = await fetch('./timelines/linkedin.timeline.php');
     let timelinesContainerDiv = document.getElementById('timelinesContainer');
     
     response.text().then(function (text) {
