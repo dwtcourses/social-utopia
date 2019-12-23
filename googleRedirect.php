@@ -28,7 +28,7 @@ if ( !isset ( $_SESSION['userInformation']->$selectedFacebookPage->google ) ) {
     // Request required API scope
     $client->addScope('https://www.googleapis.com/auth/business.manage');
     // Provide return redirect url
-    $client->setRedirectUri('https://' . $_SERVER['HTTP_HOST'] . '/socialMediaApp/tokenHandling/googleHandler.php');
+    $client->setRedirectUri(  APP_URL . 'tokenHandling/googleHandler.php');
     // offline access will give you both an access and refresh token so that
     // your app can refresh the access token without user interaction.
     $client->setAccessType('offline');
