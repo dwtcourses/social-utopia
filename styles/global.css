@@ -11,12 +11,11 @@ h3 {margin: 0;}
     margin: 0 auto;
 }
 #facebookLogInDiv {
-    width: 50%;
+    width: 80vw;
     background-color: orange;
     border-radius: 30px;
-    padding: 3% 5%;
-    margin: auto;
-    margin-top: 2rem;
+    padding: 1vw 2vw;
+    margin: 1vw auto;
     text-align: center;
 }
 
@@ -39,7 +38,7 @@ h3 {margin: 0;}
   	background-size: cover;
     background-repeat: no-repeat;
     color: #fff;
-  	padding: 50px 25px;
+  	padding: 2vw 1vw;
     text-align: center;
 	font-family: Montserrat, sans-serif;
 	
@@ -160,18 +159,24 @@ textarea#postMessage {
 
 /* Small Screens */
 @media screen and (max-width: 768px) {
-        .js-focus-visible {
+    h2 {
+        font-size: 1.5rem;
+    }
+    .js-focus-visible {
             width: 100vw;
         }
-      .col-sm-4 {
+    .col-sm-4 {
         text-align: center;
         margin: 25px 0;
       }
+    .jumbotron { 
+        padding: 1rem 1rem .25rem;
+    }
     .jumbotron h1 { 
-        font-size: 3rem;
+        font-size: 2rem;
     }
     .jumbotron p { 
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
     .accountEditorContainer{
         border-bottom: 4px dotted orange;
@@ -187,7 +192,7 @@ textarea#postMessage {
     }
     #facebookLogInDiv {
         width: 85%;
-        margin-bottom: 5rem;
+        margin: 1rem auto;
     }
     .msgEditorViewContainer{
         width: 94vw;
@@ -209,5 +214,8 @@ textarea#postMessage {
     }
     #timelinesContainer div {
         height: 40vw;
+    }
+    .navbar-brand {
+        
     }
 }
