@@ -24,7 +24,7 @@ if(isset($_GET['code'])){
 //        print_r( $server_output );
 //    echo '</pre>';
     
-    header('Location: https://dev.interactiveutopia.com/socialMediaApp?linkedInLoggedIn=true');
+    header('Location: ' . APP_URL . '?linkedInLoggedIn=true');
     
 } else {
     // If user did not authorize access to his account then throw error
