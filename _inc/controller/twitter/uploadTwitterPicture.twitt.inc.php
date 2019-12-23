@@ -20,4 +20,5 @@ $picPostParams = array(
 $tweetStatus = $this->twitterConnection->post("statuses/update", $picPostParams);
 echo ' | Twitter Picture Sent';
 //echo $mediaID;
-//print_r ($tweetStatus);
+print_r ($tweetStatus);
+echo $postImagePath;

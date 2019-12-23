@@ -22,6 +22,7 @@ if( isset($_POST['imgData']) ) {
     fclose( $ifp ); 
     
     $_SESSION['imgTempUrl'] = APP_URL . $output_file;
+    $_SESSION['imgTempName'] = $output_file;
     $_SESSION['imgTempLocalUrl'] = $_SERVER['DOCUMENT_ROOT'] . $output_file;
     //echo $output_file;
     echo 'Upload successfull at ' . $_SESSION['imgTempUrl'];
