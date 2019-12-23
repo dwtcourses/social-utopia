@@ -14,7 +14,6 @@ $twitterConnection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $oath_token
 $statuses = $twitterConnection->get("statuses/user_timeline");
 
 ?>
-    <div id="twitterTimelineDiv">
         <h3>Twitter</h3>
 <?php
         foreach ($statuses as $key => $value) {
@@ -31,8 +30,4 @@ $statuses = $twitterConnection->get("statuses/user_timeline");
                 print_r($statuses[$key]);
             echo '</pre>';*/
         }
-
-?>
-    </div>
-<?php
 } else echo 'null';

@@ -40,7 +40,6 @@ $access_token = $_SESSION['userInformation']->$selectedFacebookPage->google->goo
 if ( !isset ($serverReponseObject->localPosts) ) { echo 'null'; }
 else {
 ?>
-    <div>
         <h3>Google My Business</h3>
 <?php
     $localPostsArray = $serverReponseObject->localPosts;
@@ -56,8 +55,5 @@ foreach ($localPostsArray as $key => $value) {
     echo '</p>';
     //echo '<pre>'; print_r ($localPostInfo); echo '</pre>';
 }
-?>
-    </div>
-<?php
     }}
 } else echo 'null';

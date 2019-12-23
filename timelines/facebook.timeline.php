@@ -7,7 +7,6 @@
 // Current facebook page
     $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 ?>
-    <div class="facebookTimeline">
         <h3>Facebook</h3>
 <?php
 /* PHP SDK v5.0.0 */
@@ -57,5 +56,3 @@ $graphEdgeResponse = $response->getGraphEdge();
             //print_r($resObjectResponse);
             //exit();
         }
-?>
-    </div>

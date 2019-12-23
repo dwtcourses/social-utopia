@@ -5,7 +5,6 @@ session_start();
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget ) ) {	
 ?>
-    <div>
         <h3>Linked In</h3>
 <?php
         $selectedCompanyTarget = urlencode($_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget);   
@@ -50,4 +49,3 @@ if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->comp
             //exit();
         }
 } else echo 'null';
-        
