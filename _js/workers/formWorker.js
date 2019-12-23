@@ -10,7 +10,7 @@ async function sendFbMsg(formConentObj){
     // Try to post information via postData() set below
     try {
         // Wait for information to be sent via postData() and store response
-        const data = await postData(host + '/app.handler.php', formConentObj);
+        const data = await postData('app.handler.php', formConentObj);
         // Process response to a text string
         data.text().then(function (text) {
           // send text response back to main thread
