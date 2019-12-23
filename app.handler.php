@@ -34,7 +34,7 @@ if ( $linkURL != '') { $postMessage = $postMessage . ' at ' . $linkURL; }
 		if ( isset( $targetNetworks->facebookToken ) ) {
             // Check to see if temp image is stored on server
             if ( isset ( $_SESSION['imgTempUrl'] ) ){
-                //$_fb->uploadPhoto( $postMessage, $facebookToken, $facebookPageId, $_SESSION['imgTempUrl'] );
+                $_fb->uploadPhoto( $postMessage, $facebookToken, $facebookPageId, $_SESSION['imgTempUrl'] );
             } else {
                 if ( $postMessage != '') $_fb->sendMessage( $postMessage, $facebookToken, $facebookPageId, $linkURL );
                     else echo 'Facebook: Cannot send empty message... | ';
