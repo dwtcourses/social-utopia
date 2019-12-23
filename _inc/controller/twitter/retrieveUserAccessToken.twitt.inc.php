@@ -29,7 +29,7 @@ if ( !isset( $_SESSION['userInformation']->$managingUserPageId->twitter ) ) {
    // echo '<pre>'; print_r ($_SESSION); echo '</pre>';     
 	
     // Redirect User To App
-	header('Location: https://dev.interactiveutopia.com/socialMediaApp?twitterLoggedIn=true');
+	header('Location: ' . APP_URL . '?twitterLoggedIn=true');
     } else {
 	// If user did not authorize access to his account then throw error
     echo '<h1>Authorization Error</h1>';
