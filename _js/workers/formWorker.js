@@ -3,7 +3,7 @@
 // Facebook
 
 console.log('New form worker started');
-const host = 'https://dev.interactiveutopia.com/socialMediaApp';
+const host = '.';
 
 // Function will send form data to server and then response back to main thread
 async function sendFbMsg(formConentObj){
