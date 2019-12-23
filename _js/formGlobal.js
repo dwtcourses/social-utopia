@@ -43,7 +43,7 @@ $(document).ready(function (e) {
         formContentObject['targetNetwork'] = JSON.stringify(targetNetwork);
         let responseDataHtml = '';
         for( var selectedNetwork in targetNetwork ){
-            console.log( targetNetwork[selectedNetwork] );
+            console.log('selected network #: ' + targetNetwork[selectedNetwork] );
             
             switch ( targetNetwork[selectedNetwork] ) {
                     case '0':
@@ -58,6 +58,7 @@ $(document).ready(function (e) {
                             $("#responseViewDiv").append(e.data);
                             fbWorker.terminate();
                             console.log('Facebook: Worker terminated');
+                            getFacebookTimeline();
                         }
                         break;
                     case '1':
@@ -72,6 +73,7 @@ $(document).ready(function (e) {
                             $("#responseViewDiv").append(e.data);
                             twitterWorker.terminate();
                             console.log('Twitter: Worker terminated');
+                            getTwitterTimeline();
                         }
                         break;
                     case '2':
@@ -86,6 +88,7 @@ $(document).ready(function (e) {
                             $("#responseViewDiv").append(e.data);
                             linkedInWorker.terminate();
                             console.log('LinkedIn: Worker terminated');
+                            getLinkedInTimeline();
                         }
                         break;
                     case '3':
@@ -100,6 +103,7 @@ $(document).ready(function (e) {
                             $("#responseViewDiv").append(e.data);
                             googleWorker.terminate();
                             console.log('Google: Worker terminated');
+                            getGoogleTimeline();
                         }
                         break;
                     default:

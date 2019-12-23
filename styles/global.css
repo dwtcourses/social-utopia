@@ -203,6 +203,10 @@ textarea#postMessage {
         margin: 0 auto;
     }
     /* Timeline Editor */
+    #timelinesContainer {
+        width: 94vw;
+        margin: 0 auto;
+    }
     #timelinesContainer div {
         height: 40vw;
     }
