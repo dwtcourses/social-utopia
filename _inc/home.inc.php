@@ -15,9 +15,21 @@
     </div>
     <p>Handle all of your social media posting and management in one place! And what is the best part of it? That it is free!</p>
     <ul>
-        <li>Facebook</li>
-        <li>Twitter</li>
-        <li>LinkedIn</li>
-        <li>Google My Business</li>
+        <li>Social Networks Supported:
+            <ul>
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>LinkedIn</li>
+                <li>Google My Business</li>
+            </ul>
+        </li>
+        <li>How does it work?
+            <ol>
+                <li>Log in with Facebook</li>
+                <li>Pick a page to manage</li>
+                <li>Log in to other social networks</li>
+                <li>Start posting!</li>
+            </ol>
+        </li>
     </ul>
 </div>
