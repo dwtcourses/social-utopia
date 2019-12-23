@@ -37,7 +37,12 @@ $graphEdgeResponse = $response->getGraphEdge();
                 switch ($key) {
                     case 'created_time':
                             //print_r($value);
-                            $postedOnTimeString = date_format($value, "F j, Y, g:i a");
+                            //$postedOnTimeString = date_format($value, "F j, Y, g:i a");
+                            $postedOnTimeString = date_format($value, "U");
+                            $postedOnTime = new DateTime();
+                                $postedOnTime->setTimestamp( $postedOnTimeString );
+                                $postedOnTime->setTimezone(new DateTimeZone('America/Los_Angeles'));
+                                $postedOnTimeString = $postedOnTime->format( "F j, Y, g:i a" ); 
                             echo '<span class="facebookTimelineSpanPostedDate">On ' . $postedOnTimeString . '</span><br/>';
                         break;
                     case 'id':

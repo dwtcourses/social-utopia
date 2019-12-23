@@ -41,6 +41,7 @@ $selectedCompanyTarget = urlencode($_SESSION['userInformation']->$selectedFacebo
             // Get posted on date and turn into string
             $postedOnTime = new DateTime();
             $postedOnTime->setTimestamp( ($elements[$k]->firstPublishedAt / 1000 ) );
+            $postedOnTime->setTimezone(new DateTimeZone('America/Los_Angeles'));
             $postedOnTimeString = $postedOnTime->format( "F j, Y, g:i a" ); 
             echo '<span class="linkedinTimelineSpanPostedDate">On ' . $postedOnTimeString . '</span><br/>';
             echo '<span class="linkedinTimelineSpanPostedText">' . $specificContent->$shareContentKey->shareCommentary->text . '</span><br/>';
