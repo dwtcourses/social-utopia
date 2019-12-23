@@ -27,10 +27,32 @@ try {
 }
 $graphEdgeResponse = $response->getGraphEdge();
 /* handle the result */
-        echo '<pre>';
+        echo '<div class="facebookTimeline">';
+        
+        // Loop to get posts from received data
         foreach ($graphEdgeResponse as $resObjectResponse) {
-            print_r($resObjectResponse);
+            // Second loop to be able to see proteted items
+            echo '<p>';
+            foreach ($resObjectResponse as $key => $value) {
+                // Handle post content
+                switch ($key) {
+                    case 'created_time':
+                            //print_r($value);
+                            $postedOnTimeString = date_format($value, "F j, Y, g:i a");
+                            echo '<span class="facebookTimelineSpanPostedDate">On ' . $postedOnTimeString . '</span><br/>';
+                        break;
+                    case 'id':
+                            //print_r($value);
+                        break;
+                    default:
+                        echo '<span class="facebookTimelineSpanPostedText">' . $value . '</span>';
+                }
+                //print_r($resObjectResponse[$key]);
+            }
+            echo '</p>';
+            //print_r($resObjectResponse);
+            //exit();
         }
-        echo '</pre>';
+        echo '</div>';
 ?>
     </div>
