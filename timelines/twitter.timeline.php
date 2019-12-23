@@ -15,8 +15,20 @@ $statuses = $twitterConnection->get("statuses/user_timeline");
     <div id="twitterTimelineDiv">
         <h3>Twitter</h3>
 <?php
-echo '<pre>';
-    print_r($statuses);
-echo '</pre>';
+        foreach ($statuses as $key => $value) {
+            echo '<p>';
+            //$postedOn = date();
+            $postedOn = DateTime::createFromFormat("D M d G:i:s e Y", $statuses[$key]->created_at);
+            $postedOn->setTimezone(new DateTimeZone('America/Los_Angeles'));
+            //echo $postedOn . '<br/>';
+            $postedOnTimeString = $postedOn->format( "F j, Y, g:i a" );
+            echo '<span class="twitterTimelineSpanPostedDate">On ' . $postedOnTimeString . '</span><br/>';
+            echo '<span class="twitterTimelineSpanPostedText">' . $statuses[$key]->text . '</span><br/>';
+            echo '</p>';
+            /*echo '<pre>';
+                print_r($statuses[$key]);
+            echo '</pre>';*/
+        }
+
 ?>
     </div>

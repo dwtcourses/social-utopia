@@ -7,7 +7,7 @@
 // Current facebook page
     $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 ?>
-    <div>
+    <div class="facebookTimeline">
         <h3>Facebook</h3>
 <?php
 /* PHP SDK v5.0.0 */
@@ -27,7 +27,6 @@ try {
 }
 $graphEdgeResponse = $response->getGraphEdge();
 /* handle the result */
-        echo '<div class="facebookTimeline">';
         
         // Loop to get posts from received data
         foreach ($graphEdgeResponse as $resObjectResponse) {
@@ -53,6 +52,5 @@ $graphEdgeResponse = $response->getGraphEdge();
             //print_r($resObjectResponse);
             //exit();
         }
-        echo '</div>';
 ?>
     </div>

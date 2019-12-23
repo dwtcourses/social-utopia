@@ -32,8 +32,6 @@ $selectedCompanyTarget = urlencode($_SESSION['userInformation']->$selectedFacebo
         $responseObject = json_decode($server_output);
         $elements = $responseObject->elements;
         
-        echo '<div class="linkedInTimeline">';
-        
         // Loop inside each post
         foreach ($elements as $k => $v) {
             $specificContent = $elements[$k]->specificContent;
@@ -46,6 +44,7 @@ $selectedCompanyTarget = urlencode($_SESSION['userInformation']->$selectedFacebo
             $postedOnTimeString = $postedOnTime->format( "F j, Y, g:i a" ); 
             echo '<span class="linkedinTimelineSpanPostedDate">On ' . $postedOnTimeString . '</span><br/>';
             echo '<span class="linkedinTimelineSpanPostedText">' . $specificContent->$shareContentKey->shareCommentary->text . '</span><br/>';
+            echo '</p>';
             
             
             //echo '<pre>'; print_r($specificContent); echo '</pre>'; 
