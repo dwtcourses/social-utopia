@@ -18,5 +18,5 @@ function countChar(val) {
 
 function fbPgSelectorChange(selectObject){
     //alert(selectObject.value);
-    window.location.href = "https://dev.interactiveutopia.com/socialMediaApp/?manageSelectedFacebookPage=" + selectObject.value;
+    window.location.href = "./?manageSelectedFacebookPage=" + selectObject.value;
 }
