@@ -3,7 +3,7 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
 // Get temporary credentials.
 $this->request_token = $this->twitterConnection->oauth("oauth/request_token", [ 
-	'oauth_callback' => 'https://dev.interactiveutopia.com/socialMediaApp/tokenHandling/twitterHandler.php'
+	'oauth_callback' => APP_URL . 'tokenHandling/twitterHandler.php'
 ]);
 		
 // If last connection failed don't display authorization link
