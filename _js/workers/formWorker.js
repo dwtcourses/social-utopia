@@ -15,6 +15,7 @@ async function sendFbMsg(formConentObj){
         data.text().then(function (text) {
           // send text response back to main thread
           postMessage(text);
+            console.log(text);
         });
     } catch (error) {
         // If there is an error, log it to the console
