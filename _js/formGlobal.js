@@ -117,7 +117,7 @@ $(document).ready(function (e) {
 
 async function uploadImage(imageData){
     console.log('Image upload started');
-    const host = 'https://dev.interactiveutopia.com/socialMediaApp';
+    const host = '.';
     var preview = document.getElementById('previewImageHolder');
     var file    = document.getElementById('postImage').files[0];
     var reader  = new FileReader();
