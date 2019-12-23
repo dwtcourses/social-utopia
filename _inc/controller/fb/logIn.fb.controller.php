@@ -20,11 +20,11 @@
 		  $_SESSION['facebook_access_token'] = (string) $accessToken;
 		  $_SESSION['user'] = true;
           // Redirect user back to app
-		  header("Location: https://dev.interactiveutopia.com/socialMediaApp");
+		  header("Location: " . APP_URL);
           // Kill application after user redirect
 		  die();
 		} elseif ($helper->getError()) {
 		  // The user denied the request
-          header("Location: https://dev.interactiveutopia.com/socialMediaApp");
+          header("Location: " . APP_URL);
 		  exit;
 		}
