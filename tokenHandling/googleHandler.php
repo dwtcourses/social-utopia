@@ -16,7 +16,7 @@ if ( empty ($_SESSION['userInformation']->$selectedFacebookPage->google )){
     // Set scope required
     $client->addScope('https://www.googleapis.com/auth/business.manage');
     // Set redirect Url after user log in in Google server
-    $client->setRedirectUri('https://' . $_SERVER['HTTP_HOST'] . '/socialMediaApp/tokenHandling/googleHandler.php');
+    $client->setRedirectUri( APP_URL . 'tokenHandling/googleHandler.php');
     // Get autrizaton code from url
     $client->authenticate($_GET['code']);
 
@@ -26,7 +26,7 @@ if ( empty ($_SESSION['userInformation']->$selectedFacebookPage->google )){
     $_SESSION['userInformation']->$selectedFacebookPage->google->google_user_token = $client->getAccessToken();
 
     // Redirect user
-    header('Location: https://dev.interactiveutopia.com/socialMediaApp?googleLoggedIn=true');
+    header('Location: ' . APP_URL . '?googleLoggedIn=true');
 }
 
 // Debug Stuff
