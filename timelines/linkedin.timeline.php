@@ -3,15 +3,12 @@
 require_once "../vendor/autoload.php";
 session_start();
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
+if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget ) ) {	
 ?>
     <div>
         <h3>Linked In</h3>
 <?php
-        //https://api.linkedin.com/v2/ugcPosts?q=authors&authors=List(url-encoded organization Urn)
-        
-//$selectedCompanyTarget = str_replace("urn:li:organization:", "", $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget);
-$selectedCompanyTarget = urlencode($_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget);
-        
+        $selectedCompanyTarget = urlencode($_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget);   
         $ch = curl_init();
         $linkedIn_user_token = $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->token->access_token;
         $linkedInURL = "https://api.linkedin.com/v2/ugcPosts?q=authors&authors=List(" . $selectedCompanyTarget . ")&oauth2_access_token=" . $linkedIn_user_token;
@@ -52,4 +49,5 @@ $selectedCompanyTarget = urlencode($_SESSION['userInformation']->$selectedFacebo
             //echo '<pre>'; print_r($elements[$k]); echo '</pre>'; 
             //exit();
         }
+} else echo 'null';
         

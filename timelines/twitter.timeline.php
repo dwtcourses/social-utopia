@@ -1,10 +1,12 @@
 <?php
 // Twitter timeline
 // Require loader file
-	require_once('../_inc/loader.inc.php');
+require_once('../_inc/loader.inc.php');
 use Abraham\TwitterOAuth\TwitterOAuth;
-
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
+
+if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->twitter ) ) {	
+
 $oath_token = $_SESSION['userInformation']->$selectedFacebookPage->twitter['oauth_token'];
 $oath_token_secret = $_SESSION['userInformation']->$selectedFacebookPage->twitter['oauth_token_secret'];
 
@@ -32,3 +34,5 @@ $statuses = $twitterConnection->get("statuses/user_timeline");
 
 ?>
     </div>
+<?php
+} else echo 'null';
