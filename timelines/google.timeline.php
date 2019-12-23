@@ -23,31 +23,16 @@ $access_token = $_SESSION['userInformation']->$selectedFacebookPage->google->goo
     
     $localPostsArray = $serverReponseObject->localPosts;
 
-foreach ($localPostsArray as $k1 => $v) {
-    $localPostInfo = $localPostsArray[$k1];
-    //print_r ($localPostInfo);
-    
-    foreach ( $localPostInfo as $key => $value ) {
-        switch ($key) {
-            case 'callToAction':
-                echo 'callToAction | ' . '<br/>';
-                $callToActionObj = $localPostInfo->$key;
-                foreach ( $callToActionObj as $key => $value ) {
-                    echo ' ' . $key . ' : ' . $callToAction->$key . '<br/>';
-                }
-                break;
-            case 'media':
-                echo 'media | ' . '<br/>';
-                $mediaObj = $localPostInfo->$key[0];
-                foreach ( $mediaObj as $key => $value ) {
-                    echo ' ' . $key . ' : ' . $mediaObj->$key . '<br/>';
-                }
-                break;
-            default:
-                echo $key . ' : ' . $localPostInfo->$key . '<br/>';
-        }
-    }
-    echo '<br/><br/><br/>';
+foreach ($localPostsArray as $key => $value) {
+    $localPostInfo = $localPostsArray[$key];
+    echo '</p>';
+    $postedOn = DateTime::createFromFormat("Y-m-d\TG:i:s.u\Z", $localPostInfo->createTime); //2019-12-18T05:00:44.523Z
+        $postedOn->setTimezone(new DateTimeZone('America/Los_Angeles'));
+        $postedOnTimeString = $postedOn->format( "F j, Y, g:i a" );
+    echo '<span class="googleTimelineSpanPostedDate">On ' . $postedOnTimeString . '</span><br/>';
+    echo '<span class="googleTimelineSpanPostedText">' . $localPostInfo->summary . '</span><br/>';
+    echo '</p>';
+    //echo '<pre>'; print_r ($localPostInfo); echo '</pre>';
 }
 ?>
     </div>

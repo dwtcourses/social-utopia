@@ -149,6 +149,14 @@ textarea#postMessage {
 .twitterTimelineSpanPostedText {
     font-size: 1rem;
 }
+/* Facebook Timeline */
+.googleTimelineSpanPostedDate {
+    font-size: .75rem;
+    font-weight: bold;
+}
+.googleTimelineSpanPostedText {
+    font-size: 1rem;
+}
 
 /* Small Screens */
 @media screen and (max-width: 768px) {
