@@ -30,6 +30,6 @@
 		
 			<div class="jumbotron">
 				<h1>Social Utopia</h1>
-                <p>A social media management environment built by Interactive Utopia / Gilberto Cortez</p>
+                <p>A social media management environment</p>
 			</div>
 			<div class="mainContainer">

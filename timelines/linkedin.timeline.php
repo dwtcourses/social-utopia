@@ -31,16 +31,25 @@ $selectedCompanyTarget = urlencode($_SESSION['userInformation']->$selectedFacebo
         
         $responseObject = json_decode($server_output);
         $elements = $responseObject->elements;
+        
+        echo '<div class="linkedInTimeline">';
+        
+        // Loop inside each post
         foreach ($elements as $k => $v) {
             $specificContent = $elements[$k]->specificContent;
-            foreach ($specificContent as $k2 => $v2 ){
-                echo '- ' . $specificContent->$k2->shareCommentary->text . '<br/>';
-/*                echo '<pre>';
-                    print_r($specificContent->$k2);
-                echo '</pre>';   */
-            }
-/*                echo '<pre>';
-                    print_r($elements[$k]);
-                echo '</pre>';*/   
+            $shareContentKey = 'com.linkedin.ugc.ShareContent'; 
+            echo '<p>';
+            
+            // Get posted on date and turn into string
+            $postedOnTime = new DateTime();
+            $postedOnTime->setTimestamp( ($elements[$k]->firstPublishedAt / 1000 ) );
+            $postedOnTimeString = $postedOnTime->format( "F j, Y, g:i a" ); 
+            echo '<span class="linkedinTimelineSpanPostedDate">On ' . $postedOnTimeString . '</span><br/>';
+            echo '<span class="linkedinTimelineSpanPostedText">' . $specificContent->$shareContentKey->shareCommentary->text . '</span><br/>';
+            
+            
+            //echo '<pre>'; print_r($specificContent); echo '</pre>'; 
+            //echo '<pre>'; print_r($elements[$k]); echo '</pre>'; 
+            //exit();
         }
         
