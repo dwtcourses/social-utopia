@@ -6,7 +6,8 @@
 // Start session in server
 	session_start();
 
-$_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'] . '/socialMediaApp/';
+if ( $_SERVER['DOCUMENT_ROOT'] == '/var/www/vhosts/interactiveutopia.com/subdomains/dev/httpdocs')
+    $_SERVER['DOCUMENT_ROOT'] = $_SERVER['DOCUMENT_ROOT'] . '/socialMediaApp/';
 
 // Load global application variables
     require ( $_SERVER['DOCUMENT_ROOT'] . '/_inc/_private/auth.tokens.php');
