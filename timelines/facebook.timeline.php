@@ -14,19 +14,20 @@
 try {
   // Returns a `Facebook\FacebookResponse` object
   $response = $_fb->fb->get(
-    '/' . $selectedFacebookPage . '/feed',
-    '' . $_SESSION['userInformation']->$selectedFacebookPage->pageToken . ''
+    '/' . $selectedFacebookPage . '/feed', // Facebook Page to Retrieve Timeline
+    '' . $_SESSION['userInformation']->$selectedFacebookPage->pageToken . '' // Authorization token
   );
-} catch(Facebook\Exceptions\FacebookResponseException $e) {
+} catch(Facebook\Exceptions\FacebookResponseException $e) { // Catch graph error
   echo 'Graph returned an error: ' . $e->getMessage();
   exit;
-} catch(Facebook\Exceptions\FacebookSDKException $e) {
+} catch(Facebook\Exceptions\FacebookSDKException $e) { // Catch SDK error
   echo 'Facebook SDK returned an error: ' . $e->getMessage();
   exit;
 }
+
+// Store retrieved data
 $graphEdgeResponse = $response->getGraphEdge();
 /* handle the result */
-        
         // Loop to get posts from received data
         foreach ($graphEdgeResponse as $resObjectResponse) {
             // Second loop to be able to see proteted items
@@ -53,6 +54,6 @@ $graphEdgeResponse = $response->getGraphEdge();
                 //print_r($resObjectResponse[$key]);
             }
             echo '</p>';
-            //print_r($resObjectResponse);
+            //echo '<pre>'; print_r($resObjectResponse); echo '</pre>';
             //exit();
         }

@@ -18,13 +18,14 @@ $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 $targetNetworks = json_decode($_POST['targetNetwork'] ?? '');
 //print_r($_POST);
 // Form values
-$facebookPageId = $_POST['facebookPageId'] ?? '';
-$facebookToken = $_POST['facebookToken'] ?? '';
-$twitterToken = $_POST['twitterToken'] ?? '';
-$linkedInRequest = $_POST['linkedInToken'] ?? '';
-$linkedInRequest = $_POST['googleToken'] ?? '';
-$postMessage = $_POST['postMessage'] ?? '';
-$linkURL = $_POST['linkURL'] ?? '';
+$facebookPageId = strip_tags($_POST['facebookPageId']) ?? '';
+$facebookToken = strip_tags($_POST['facebookToken']) ?? '';
+$twitterToken = strip_tags($_POST['twitterToken']) ?? '';
+$linkedInRequest = strip_tags($_POST['linkedInToken']) ?? '';
+$linkedInRequest = strip_tags($_POST['googleToken']) ?? '';
+$postMessage = strip_tags($_POST['postMessage']) ?? '';
+$linkURL = strip_tags($_POST['linkURL']) ?? '';
+
 if ( $linkURL != '') { $postMessage = $postMessage . ' at ' . $linkURL; }
 
 // If photo use photo upload function
@@ -66,9 +67,10 @@ if ( $linkURL != '') { $postMessage = $postMessage . ' at ' . $linkURL; }
     // Google My Business API Section
         if ( isset( $targetNetworks->googleToken ) ) {
             if ( $postMessage != '') {
+                $postMessageGoogle = addslashes($postMessage);
                 if ( isset ( $_SESSION['imgTempUrl'] ) ){
-                    $_google->sendPhotoMessage( $postMessage, $linkURL );
-                } else $_google->sendMessage( $postMessage );
+                    $_google->sendPhotoMessage( $postMessageGoogle, $linkURL );
+                } else $_google->sendMessage( $postMessageGoogle );
             } else echo 'Google My Business: Cannot send empty message...';
         } 
 	}
