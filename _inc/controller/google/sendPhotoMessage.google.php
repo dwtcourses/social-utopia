@@ -1,21 +1,26 @@
 <?php
-echo 'sending google image post';
+//echo 'sending google image post';
 
 // Generate Json code to provide to google
-$submitJson = '{
-  "languageCode": "en-US",
-  "summary": "' . $postMessage . '",
-  "callToAction": {
-    "actionType": "LEARN_MORE",
-    "url": "' . $linkURL . '",
-  },
-  "media": [
-    {
-      "mediaFormat": "PHOTO",
-      "sourceUrl": "' . $_SESSION['imgTempUrl'] . '",
-    }
-  ],
-}';
+if ($linkURL == ''){
+    echo 'Google required a link url for this type of call to action post';
+    exit();
+} else {
+    $submitJson = '{
+      "languageCode": "en-US",
+      "summary": "' . $postMessage . '",
+      "callToAction": {
+        "actionType": "LEARN_MORE",
+        "url": "' . $linkURL . '",
+      },
+      "media": [
+        {
+          "mediaFormat": "PHOTO",
+          "sourceUrl": "' . $_SESSION['imgTempUrl'] . '",
+        }
+      ],
+    }';
+}
 	
     // Set connection variables and provide access token
     $selectedFacebookPage = $_SESSION['userInformation']->lastManagedPgId;
