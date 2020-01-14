@@ -1,11 +1,14 @@
 // JavaScript Document
 // AJAX Call to Send Message
 $(document).ready(function (e) {
+    
      $("#form").on('submit',(function(e) {
     // Prevent form from auto submitting and changing page
       e.preventDefault();
     // Clear response div
     $("#responseViewDiv").html('');
+    let preview = document.getElementById('previewImageHolder');
+    preview.src = 'images/preview-panel.png';
     // Get from data
     let receivedFormData = new FormData(this);
     // Check for browser support of web workers
@@ -48,6 +51,7 @@ $(document).ready(function (e) {
             switch ( targetNetwork[selectedNetwork] ) {
                     case '0':
                     // Facebook
+                     $("#responseViewDiv").append('<div id="facebookResDiv">Sending Facebook Message...</div>');
                         let fbWorker = new Worker('./_js/workers/formWorker.js');
                         formContentObject['targetNetwork'] = JSON.stringify( { facebookToken: 0 } );
                         // Post information to worker
@@ -55,7 +59,8 @@ $(document).ready(function (e) {
                         // Get information from worker
                         fbWorker.onmessage = function(e) {
                             console.log('Facebook: Message received from worker: ' + e.data);
-                            $("#responseViewDiv").append(e.data);
+                            $("#facebookResDiv").empty();
+                            $("#facebookResDiv").append(e.data);
                             fbWorker.terminate();
                             console.log('Facebook: Worker terminated');
                             getFacebookTimeline();
@@ -63,6 +68,7 @@ $(document).ready(function (e) {
                         break;
                     case '1':
                     // Twitter
+                    $("#responseViewDiv").append('<div id="twitterResDiv">Sending Twitter Message...</div>');
                         let twitterWorker = new Worker('./_js/workers/formWorker.js');
                         formContentObject['targetNetwork'] = JSON.stringify( { twitterToken: 0 } );
                         // Post information to worker
@@ -70,7 +76,8 @@ $(document).ready(function (e) {
                         // Get information from worker
                         twitterWorker.onmessage = function(e) {
                             console.log(' Twitter: Message received from worker: ' + e.data);
-                            $("#responseViewDiv").append(e.data);
+                            $("#twitterResDiv").empty();
+                            $("#twitterResDiv").append(e.data);
                             twitterWorker.terminate();
                             console.log('Twitter: Worker terminated');
                             getTwitterTimeline();
@@ -78,6 +85,7 @@ $(document).ready(function (e) {
                         break;
                     case '2':
                     // LinkedIn
+                    $("#responseViewDiv").append('<div id="linkedInResDiv">Sending LinkedIn Message...</div>');
                         let linkedInWorker = new Worker('./_js/workers/formWorker.js');
                         formContentObject['targetNetwork'] = JSON.stringify( { linkedInToken: 0 } );
                         // Post information to worker
@@ -85,7 +93,8 @@ $(document).ready(function (e) {
                         // Get information from worker
                         linkedInWorker.onmessage = function(e) {
                             console.log(' LinkedIn: Message received from worker: ' + e.data);
-                            $("#responseViewDiv").append(e.data);
+                            $("#linkedInResDiv").empty();
+                            $("#linkedInResDiv").append(e.data);
                             linkedInWorker.terminate();
                             console.log('LinkedIn: Worker terminated');
                             getLinkedInTimeline();
@@ -93,6 +102,7 @@ $(document).ready(function (e) {
                         break;
                     case '3':
                     // Google
+                    $("#responseViewDiv").append('<div id="googleResDiv">Sending Google My Business Message...</div>');
                         let googleWorker = new Worker('./_js/workers/formWorker.js');
                         formContentObject['targetNetwork'] = JSON.stringify( { googleToken: 0 } );
                         // Post information to worker
@@ -100,7 +110,8 @@ $(document).ready(function (e) {
                         // Get information from worker
                         googleWorker.onmessage = function(e) {
                             console.log(' Google: Message received from worker: ' + e.data);
-                            $("#responseViewDiv").append(e.data);
+                            $("#googleResDiv").empty();;
+                            $("#googleResDiv").append(e.data);
                             googleWorker.terminate();
                             console.log('Google: Worker terminated');
                             getGoogleTimeline();

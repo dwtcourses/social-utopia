@@ -119,6 +119,15 @@ textarea#postMessage {
     max-width: 85%;
 }
 
+/* Social Media Selector */
+.socialMediaNetworkToggles {
+    text-align: center;
+}
+.socialMediaNetworkToggles label,
+.socialMediaNetworkToggles input {
+    margin: 0 1rem 1rem 0;
+}
+
 /* Timeline Editor */
 #timelinesContainer div {
     height: 20vw;
@@ -214,8 +223,5 @@ textarea#postMessage {
     }
     #timelinesContainer div {
         height: 40vw;
-    }
-    .navbar-brand {
-        
     }
 }
