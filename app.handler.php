@@ -72,7 +72,7 @@ if ( $linkURL != '') { $postMessage = $postMessage . ' at ' . $linkURL; }
                         } else {
                             $_linkedIn->sendMessage( $postMessage ); 
                         }
-                    } else { echo 'Facebook deselected'; exit(); }
+                    } else { echo 'Linked in deselected'; exit(); }
                 } else echo 'Linked In: Cannot send empty message... | ';
             } else { exit(); }
         }
