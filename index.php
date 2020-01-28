@@ -29,9 +29,12 @@
             // If user is returning continue
             // Check to see if user already has selected a page to manage
 			if ( !empty( $_GET['manageSelectedFacebookPage']) || !empty($_SESSION['lastFbPageToManage']) ) {
+                
                     // If yes, include post editor / composer
 				    require_once('./_inc/view/editor.inc.php');
                     require_once('./_inc/view/timelines.inc.php');
+                    // Include Facebook Management Code
+                     require_once('_inc/facebook.inc.php');
 			} else {
 			     // Include Facebook Management Code
 			     require_once('_inc/facebook.inc.php');

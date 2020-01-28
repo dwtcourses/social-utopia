@@ -2,17 +2,31 @@
 // AJAX Call to Send Message
 $(document).ready(function (e) {
     
-     $("#form").on('submit',(function(e) {
-    // Prevent form from auto submitting and changing page
-      e.preventDefault();
-    // Clear response div
-    $("#responseViewDiv").html('');
-    let preview = document.getElementById('previewImageHolder');
-    preview.src = 'images/preview-panel.png';
-    // Get from data
-    let receivedFormData = new FormData(this);
-    // Check for browser support of web workers
-    if (window.Worker) {
+    $("#form").on('submit',(function(e) {
+        // Prevent form from auto submitting and changing page
+        e.preventDefault();
+        // Clear response div
+        $("#responseViewDiv").html('');
+        let preview = document.getElementById('previewImageHolder');
+        preview.src = 'images/preview-panel.png';
+        // Get from data
+        let receivedFormData = new FormData(this);
+        // Check for browser support of web workers
+
+        let textBox = document.getElementById('postMessage');
+        let linkURL = document.getElementById('linkURL');
+    
+        var lenTextBox = textBox.value.length;
+        var lenLinkURL = linkURL.value.length;
+        
+        var lenSum = lenTextBox + lenLinkURL;
+        
+        let twitterToggle = document.getElementById('twitterToggle');
+        
+        if (lenSum >= 280 && twitterToggle.checked === true) {
+            alert("Message is too long for twitter, please review and make it a bit shorter");
+        } 
+        else if (window.Worker) {
         // Set up information to send to worker
         // Create new form data object
         let formContentObject = new Object();

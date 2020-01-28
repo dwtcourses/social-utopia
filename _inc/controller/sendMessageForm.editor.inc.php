@@ -52,12 +52,12 @@
 ?>
 								<div class="form-group" id="msgEditorForm">
 									<label for="postMessage">Message:</label>
-									<textarea id="postMessage" name="postMessage" class="form-control" onkeyup="countChar(this)"></textarea><br>
+									<textarea id="postMessage" name="postMessage" class="form-control" onkeyup="countChar()"></textarea><br>
                                     <div id="charNum"></div><br/>
 								</div>
 								<div class="form-group">
 									<label for="linkURL">Link URL:</label>
-									<input type="url" id="linkURL" name="linkURL" class="form-control" /><br>
+									<input type="url" id="linkURL" name="linkURL" class="form-control" onkeyup="countChar()"/><br>
 								</div>
 								<div class="form-group">
 									<label for="postImage">Post Image:</label>

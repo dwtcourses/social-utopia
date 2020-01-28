@@ -6,12 +6,19 @@ $(document).ready(function () {
 	}
 });
 
-function countChar(val) {
-        var len = val.value.length;
-        if (len >= 500) {
-          val.value = val.value.substring(0, 500);
+function countChar() {
+        let textBox = document.getElementById('postMessage');
+        let linkURL = document.getElementById('linkURL');
+    
+        var lenTextBox = textBox.value.length;
+        var lenLinkURL = linkURL.value.length;
+    
+        var lenSum = lenTextBox + lenLinkURL;
+    
+        if (lenSum >= 500) {
+          textBox.value = textBox.value.substring(0, 500);
         } else {
-          $('#charNum').text(len + ' characters of 280 (Twitter Max).');
+          $('#charNum').text(lenSum + ' text box characters of 280 (Twitter Max)');
          //$('#charNum').text(len + ' characters of 280 (Twitter Max). ' + (280 - len) + ' remaining');
         }
       }

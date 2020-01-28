@@ -32,8 +32,12 @@ if( !isset( $_SESSION['userInformation'] )) {
         echo "Error: " . $e->getMessage();
     }
 }
-// Get Facebook pages that user can manage
-$_fb->requestUserManagePagesList();
+
+if ( !empty( $_GET['manageSelectedFacebookPage']) || !empty($_SESSION['lastFbPageToManage']) ) {
+} else {
+    // Get Facebook pages that user can manage
+    $_fb->requestUserManagePagesList();
+}
 
 $userInfo = serialize( $_SESSION['userInformation'] );
 
@@ -66,13 +70,13 @@ try {
     $_SESSION['userFacebookId'] = $queryResults2['facebookId'];
     $_SESSION['userInformation'] = unserialize ( $queryResults2['tokens'] );
     
-    //echo '<pre>';
+    echo '<pre>';
         //$date = new DateTime();
         //$date->setTimestamp(1575835691);
         //echo date_format($date, 'U = Y-m-d H:i:s') . "\n";
         //print_r( $queryResults2 );
         //print_r( $_SESSION );
-    //echo '</pre>';
+    echo '</pre>';
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
