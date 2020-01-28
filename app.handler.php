@@ -65,7 +65,7 @@ if ( $linkURL != '') { $postMessage = $postMessage . ' at ' . $linkURL; }
             if ( $linkedInToggle == 'on' ) {
                 $selectedCompanyTarget = str_replace("urn:li:organization:", "", $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget);
                 if ( $postMessage != '') {
-                    if ( $facebookToggle == 'on' ) {
+                    if ( $linkedInToggle == 'on' ) {
                         if ( isset ( $_SESSION['imgTempUrl'] ) ){
                             // Sent message with photo
                             $_linkedIn->uploadPhoto( $_SESSION['imgTempLocalUrl'], $postMessage ); 
