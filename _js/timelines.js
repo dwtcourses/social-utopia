@@ -7,7 +7,7 @@ async function afterStyles(){
     //console.log('networks: ' + timelineNodes.length);
     var i;
     for (i = 0; i < timelineNodes.length; i++) {
-        timelineNodes[i].classList.add('col-sm-6');
+        timelineNodes[i].classList.add('col-xl');
     }
     //console.log(timelineNodes);
 }

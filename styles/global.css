@@ -150,7 +150,7 @@ textarea#postMessage {
 
 /* Timeline Editor */
 #timelinesContainer div {
-    height: 20vw;
+    height: 80vh;
     overflow: scroll;
 }
 
@@ -198,6 +198,7 @@ textarea#postMessage {
 .main_left_nav {
     border-right: 1px solid black;
 }
+
 /* Small Screens */
 @media screen and (max-width: 768px) {
     h2 {
