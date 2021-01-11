@@ -38,9 +38,4 @@
                 require("nav.inc.php"); 
             ?>
 		</header>
-		
-			<div class="jumbotron">
-				<h1>Social Utopia</h1>
-                <p>A social media management environment</p>
-			</div>
 			<div class="mainContainer">
