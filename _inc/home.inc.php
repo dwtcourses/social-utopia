@@ -3,7 +3,7 @@
 // This is the user main welcome page.
 // User is not yet logged in
 ?>
-<div id="homeContent">
+<div id="container">
     <div id="facebookLogInDiv">
         <i class="fab fa-facebook"></i>
         <p>To start please log in using Facebook</p>
@@ -13,8 +13,9 @@
         ?>
     </div>
 
-    <div class="container home_content">
-        <p>Handle all of your social media posting and management in one place! And what is the best part of it? That it is free!</p>
+    <div class="container">
+        <h4>Handle all of your social media posting and management in one place!</h4>
+        <p>What is the best part of it? That it is free!</p>
         <div class="row">
             <div class="col">
                 <ul>

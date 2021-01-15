@@ -38,4 +38,4 @@
                 require("nav.inc.php"); 
             ?>
 		</header>
-			<div class="mainContainer">
+			<div class="container-fluid p-0">

@@ -9,12 +9,12 @@ $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
     
 if ( !isset ( $_SESSION['userInformation']->$selectedFacebookPage->google ) ) {
 ?>
-<h4>Google My Business</h4>
+<span class="account_network">Google My Business</span>
 <p><a href="googleRedirect.php"><input type="button" id="loginGoogle" class="btn btn-primary"  value = "Login | Google "/></a></p>
 
 <?php
 } else if ( !isset ( $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation ) ){
-    echo '<h4>Google</h4>';
+    echo '<span class="account_network">Google</span>';
     
         echo '<p><a href="logout.php?logOutGoogle=' . $selectedFacebookPage . '">Log Out</a></p>';
         // If user is logged in then have him select a company & location to manage
@@ -45,7 +45,7 @@ if ( !isset ( $_SESSION['userInformation']->$selectedFacebookPage->google ) ) {
 	//	print_r (json_decode($server_output));
 	//echo'</pre>';
 } else if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation ) ){
-    echo '<h4>Google</h4>';
+    echo '<span class="account_network">Google</span>';
     $tokenCreatedOn = $_SESSION['userInformation']->$selectedFacebookPage->google->google_user_token['created'];
     $tokenExpiresIn = $_SESSION['userInformation']->$selectedFacebookPage->google->google_user_token['expires_in'];
     $expirationDateS = $tokenCreatedOn + $tokenExpiresIn;
@@ -59,10 +59,10 @@ if ( !isset ( $_SESSION['userInformation']->$selectedFacebookPage->google ) ) {
 
     if ( $expirationDate <= $date ) {
         echo 'Token has expired';
-        echo '<p><a href="googleRedirect.php">Refresh Token</a></p>';
-        echo '<p><a href="logout.php?logOutGoogle=' . $selectedFacebookPage . '">Log Out</a></p>';
+        echo ' <a href="googleRedirect.php">Refresh Token</a>';
+        echo ' <a href="logout.php?logOutGoogle=' . $selectedFacebookPage . '">Log Out</a>';
     } else {
-        echo '<p><a href="logout.php?logOutGoogle=' . $selectedFacebookPage . '">Log Out</a></p>';
+        echo ' <a href="logout.php?logOutGoogle=' . $selectedFacebookPage . '">Log Out</a>';
         echo $_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation->locationName;
     }
 }
