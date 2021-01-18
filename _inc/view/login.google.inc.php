@@ -13,8 +13,7 @@ $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
     // If there is no google token stored in session then run code below
     if (!isset($_SESSION['userInformation']->$selectedFacebookPage->google)) {
     ?>
-        <p><a href="googleRedirect.php"><input type="button" id="loginGoogle" class="btn btn-primary" value="Login | Google " /></a></p>
-
+        <a href="googleRedirect.php"><input type="button" id="loginGoogle" class="btn btn-primary" value="Login | Google " /></a>
     <?php
         // If there is a google token stored on session, then make sure that there is a location selected, if there is not then run code below
     } else if (!isset($_SESSION['userInformation']->$selectedFacebookPage->google->locationInformation)) {
