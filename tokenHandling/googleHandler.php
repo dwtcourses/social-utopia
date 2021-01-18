@@ -3,6 +3,7 @@
 // Require loader file
 require_once('../_inc/loader.inc.php');
 // Get current managed page
+//echo'<pre>';print_r($_SESSION['userInformation']);echo'</pre>';
 $selectedFacebookPage = $_SESSION['userInformation']->lastManagedPgId;
 
 // Star new Google API Instance
@@ -17,9 +18,10 @@ if ( empty ($_SESSION['userInformation']->$selectedFacebookPage->google )){
     $client->addScope('https://www.googleapis.com/auth/business.manage');
     // Set redirect Url after user log in in Google server
     $client->setRedirectUri( APP_URL . 'tokenHandling/googleHandler.php');
+    $client->setAccessType('offline');
+    
     // Get autrizaton code from url
     $client->authenticate($_GET['code']);
-
 
     // Store token information into user session
     $_SESSION['userInformation']->$selectedFacebookPage->google = new stdClass();
@@ -32,6 +34,5 @@ if ( empty ($_SESSION['userInformation']->$selectedFacebookPage->google )){
 // Debug Stuff
 //echo '<pre>';
     //print_r($_REQUEST);
-    //print_r($access_token);
     echo'<pre>';print_r($_SESSION['userInformation']->$selectedFacebookPage);echo'</pre>';
 //echo '<pre>';
