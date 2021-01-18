@@ -62,7 +62,7 @@
 				<div id="charNum"></div><br />
 			</div>
 			<div class="form-group">
-				<label for="linkURL">Link URL:</label>
+				<label for="linkURL">Link URL: ( Add {link} where you would like to see it in your message )</label>
 				<input type="url" id="linkURL" name="linkURL" class="form-control" onkeyup="countChar()" /><br>
 			</div>
 			<div class="form-group">
