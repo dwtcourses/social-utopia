@@ -3,6 +3,12 @@
 require_once "../vendor/autoload.php";
 // Start server session
 session_start();
+
+// Include linkify() function
+// It allows to convert any links in strings into urls with proper <a> tags
+require_once '../_inc/functions/linkify.inc.php';
+
+
 // Get current managed page
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 
@@ -51,7 +57,7 @@ foreach ($localPostsArray as $key => $value) {
         $postedOn->setTimezone(new DateTimeZone('America/Los_Angeles'));
         $postedOnTimeString = $postedOn->format( "F j, Y, g:i a" );
     echo '<span class="googleTimelineSpanPostedDate">On ' . $postedOnTimeString . '</span><br/>';
-    echo '<span class="googleTimelineSpanPostedText">' . $localPostInfo->summary . '</span><br/>';
+    echo '<span class="googleTimelineSpanPostedText">' . linkify($localPostInfo->summary) . '</span><br/>';
     echo '</p>';
     //echo '<pre>'; print_r ($localPostInfo); echo '</pre>';
 }

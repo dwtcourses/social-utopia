@@ -2,10 +2,16 @@
 // Load composer required files
 require_once "../vendor/autoload.php";
 session_start();
+
+// Include linkify() function
+// It allows to convert any links in strings into urls with proper <a> tags
+require_once '../_inc/functions/linkify.inc.php';
+
+
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget ) ) {	
 ?>
-        <h3>Linked In</h3>
+        <h3>LinkedIn</h3>
 <?php
         $selectedCompanyTarget = urlencode($_SESSION['userInformation']->$selectedFacebookPage->linkedIn->companyTarget);   
         $ch = curl_init();
@@ -40,7 +46,7 @@ if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->linkedIn->comp
             $postedOnTime->setTimezone(new DateTimeZone('America/Los_Angeles'));
             $postedOnTimeString = $postedOnTime->format( "F j, Y, g:i a" ); 
             echo '<span class="linkedinTimelineSpanPostedDate">On ' . $postedOnTimeString . '</span><br/>';
-            echo '<span class="linkedinTimelineSpanPostedText">' . $specificContent->$shareContentKey->shareCommentary->text . '</span><br/>';
+            echo '<span class="linkedinTimelineSpanPostedText">' . linkify($specificContent->$shareContentKey->shareCommentary->text) . '</span><br/>';
             echo '</p>';
             
             

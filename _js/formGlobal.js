@@ -22,7 +22,7 @@ $(document).ready(function (e) {
     // } else {
     //   var text_box_message = document.getElementById("postMessage").value;
     // }
-    console.log(text_box_message);
+    //console.log(text_box_message);
 
     var lenTextBox = textBox.value.length;
     var lenLinkURL = linkURL.value.length;

@@ -1,9 +1,14 @@
 <?php
 // Twitter timeline
 // This file will be async requested from the main app via a Worker
+
 // Require loader file
 require_once('../_inc/loader.inc.php');
 use Abraham\TwitterOAuth\TwitterOAuth;
+
+// Include linkify() function
+// It allows to convert any links in strings into urls with proper <a> tags
+require_once '../_inc/functions/linkify.inc.php';
 
 // Get currently selected facebook page
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
@@ -34,7 +39,7 @@ if ( isset ( $_SESSION['userInformation']->$selectedFacebookPage->twitter ) ) {
             // Print status posted date and time (formated)
             echo '<span class="twitterTimelineSpanPostedDate">On ' . $postedOnTimeString . '</span><br/>';
             // Print status text summary
-            echo '<span class="twitterTimelineSpanPostedText">' . $statuses[$key]->text . '</span><br/>';
+            echo '<span class="twitterTimelineSpanPostedText">' . linkify($statuses[$key]->text) . '</span><br/>';
             echo '</p>';
             /*echo '<pre>';
                 print_r($statuses[$key]);
