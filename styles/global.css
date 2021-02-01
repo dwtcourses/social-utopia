@@ -247,7 +247,10 @@ textarea#postMessage {
     }
 
     #facebookLogInDiv {
-        width: 85%;
+        margin: 1rem auto;
+    }
+
+    .main_left_nav {
         margin: 1rem auto;
     }
 

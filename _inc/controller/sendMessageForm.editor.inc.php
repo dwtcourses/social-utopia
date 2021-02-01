@@ -1,7 +1,7 @@
 <h2>Let's Send A Message!</h2>
 <form class="formStyle" id="form">
 	<div class="row">
-		<div class="col">
+		<div class="col-md">
 			<div class="socialMediaNetworkToggles">
 				<label for="facebookToggle">Facebook</label>
 				<input type="checkbox" id="facebookToggle" name="facebookToggle" <?php if (isset($_SESSION['userInformation']->$selectedFacebookPage)) echo 'checked';
@@ -71,7 +71,7 @@
 			</div>
 			<button type="submit" id="sendMessageBtn" name="sendMessageBtn" class="btn btn-primary" value="Send Message" <?php if (!isset($_SESSION['userInformation'])) echo 'disabled'; ?>>Send Message</button>
 		</div>
-		<div class="col">
+		<div class="col-md">
 			<div id="preview"><img src="images/preview-panel.png" id="previewImageHolder" /></div><br>
 			<div id="responseViewDiv"></div><br>
 		</div>
