@@ -1,13 +1,13 @@
 <?php
 // Include linkify() function
 // It allows to convert any links in strings into urls with proper <a> tags
-require_once '../_inc/functions/linkify.inc.php';
+include_once '../_inc/functions/linkify.inc.php';
 
 
 // Twitter timeline
 // This file will be async requested from the main app via a Worker
 // Require loader file
-require_once('../_inc/loader.inc.php');
+include_once('../_inc/loader.inc.php');
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
@@ -15,8 +15,8 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 $selectedFacebookPage = $_SESSION['lastFbPageToManage'];
 
 // Get search query
-if ( !empty ($_GET['search_hashtag'])) $search_hashtag = '#' . $_GET['search_hashtag'];
-else $search_hashtag = '#test';
+if (!empty($_GET['search_hashtag'])) $search_hashtag = '#' . $_GET['search_hashtag'];
+else $search_hashtag = '#interactiveUtopia';
 
 // Check to see if user is logged into Twitter under the selected facebook page
 if (isset($_SESSION['userInformation']->$selectedFacebookPage->twitter)) {
@@ -38,9 +38,25 @@ if (isset($_SESSION['userInformation']->$selectedFacebookPage->twitter)) {
 
     //Start printing timeline conent
 ?>
-    <h3>Twitter</h3>
+    <script>
+        const search_hashtag = () => {
+            let hashtag = document.getElementById('hashtag').value;
+            window.location.href = "https://social.interactiveutopia.com/timelines/twitter.hastags.php?search_hashtag=" + hashtag;
+        }
+    </script>
     <p>Recent tweets with <?php echo $search_hashtag; ?></p>
+    <form>
+        <label for="hashtag">Hashtag:</label>
+        <input type="text" name="hashtag" id="hashtag">
+        <input type="button" value="Search" id="hashtag_search_btn" onclick="search_hashtag()">
+    </form>
 <?php
+
+    // Get search hashtag
+    if (empty($_GET['search_hashtag']))
+        exit();
+
+    
     // Loop through received timeline statuses to print each individual one
     foreach ($statuses as $key => $value) {
         echo '<p>';
@@ -51,11 +67,11 @@ if (isset($_SESSION['userInformation']->$selectedFacebookPage->twitter)) {
 
         // Print status posted date and time (formated)
         echo '<span class="twitterTimelineSpanPostedDate">On ' . $postedOnTimeString . '</span><br/>';
-        echo '<span class="twitterTimelineSpanPostedBy">By ' . 
-                                            $statuses[$key]->user->name . 
-                                            ' (<a href="https://twitter.com/' . $statuses[$key]->user->screen_name . '">@' . $statuses[$key]->user->screen_name . '</a>)' .
-                                            ' | <a href="' . $statuses[$key]->user->url . '">Website</a>'
-            .'</span><br/>';
+        echo '<span class="twitterTimelineSpanPostedBy">By ' .
+            $statuses[$key]->user->name .
+            ' (<a href="https://twitter.com/' . $statuses[$key]->user->screen_name . '" target="_blank">@' . $statuses[$key]->user->screen_name . '</a>)' .
+            ' | <a href="' . $statuses[$key]->user->url . '" target="_blank">Website</a>'
+            . '</span><br/>';
 
         // Print status text summary
         echo '<span class="twitterTimelineSpanPostedText">' . linkify($statuses[$key]->text) . '</span><br/>';
@@ -65,10 +81,9 @@ if (isset($_SESSION['userInformation']->$selectedFacebookPage->twitter)) {
     echo '</pre>';*/
     }
 
-    echo '<pre>';
-    print_r($statuses);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($statuses);
+    // echo '</pre>';
 
 
 } else echo 'null'; // if user is not authenticated then return null
-

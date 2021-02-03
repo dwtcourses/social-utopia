@@ -31,22 +31,22 @@ function linkify($value, $protocols = array('http', 'mail'), array $attributes =
                 $value = preg_replace_callback('~(?:(https?)://([^\s<]+)|(www\.[^\s<]+?\.[^\s<]+))(?<![\.,:])~i', function ($match) use ($protocol, &$links, $attr) {
                     if ($match[1]) $protocol = $match[1];
                     $link = $match[2] ?: $match[3];
-                    return '<' . array_push($links, "<a $attr href=\"$protocol://$link\">$link</a>") . '>';
+                    return '<' . array_push($links, "<a $attr href=\"$protocol://$link\" target=\"_blank\">$link</a>") . '>';
                 }, $value);
                 break;
             case 'mail':
                 $value = preg_replace_callback('~([^\s<]+?@[^\s<]+?\.[^\s<]+)(?<![\.,:])~', function ($match) use (&$links, $attr) {
-                    return '<' . array_push($links, "<a $attr href=\"mailto:{$match[1]}\">{$match[1]}</a>") . '>';
+                    return '<' . array_push($links, "<a $attr href=\"mailto:{$match[1]}\" target=\"_blank\">{$match[1]}</a>") . '>';
                 }, $value);
                 break;
             case 'twitter':
                 $value = preg_replace_callback('~(?<!\w)[@#](\w++)~', function ($match) use (&$links, $attr) {
-                    return '<' . array_push($links, "<a $attr href=\"https://twitter.com/" . ($match[0][0] == '@' ? '' : 'search/%23') . $match[1]  . "\">{$match[0]}</a>") . '>';
+                    return '<' . array_push($links, "<a $attr href=\"https://twitter.com/" . ($match[0][0] == '@' ? '' : 'search/%23') . $match[1]  . "\" target=\"_blank\">{$match[0]}</a>") . '>';
                 }, $value);
                 break;
             default:
                 $value = preg_replace_callback('~' . preg_quote($protocol, '~') . '://([^\s<]+?)(?<![\.,:])~i', function ($match) use ($protocol, &$links, $attr) {
-                    return '<' . array_push($links, "<a $attr href=\"$protocol://{$match[1]}\">{$match[1]}</a>") . '>';
+                    return '<' . array_push($links, "<a $attr href=\"$protocol://{$match[1]}\" target=\"_blank\">{$match[1]}</a>") . '>';
                 }, $value);
                 break;
         }
